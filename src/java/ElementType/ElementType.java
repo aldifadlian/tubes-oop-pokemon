@@ -1,6 +1,6 @@
-public enum Element {
-    normal,
-    fire,
-    water,
-    grass;
+public enum ElementType {
+    NORMAL,
+    FIRE,
+    WATER,
+    GRASS;
 }

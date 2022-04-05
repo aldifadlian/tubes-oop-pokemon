@@ -1,30 +1,8 @@
-public class StatusCondition {
-    //atribut
-    private boolean burn = false;
-    private boolean poison = false;
-    private boolean sleep = false;
-    private boolean paralyze = false;
+public interface StatusCondition {
 
-    //konstruktor
-    public StatusCondition(){
-        this.burn = false;
-        this.poison = false;
-        this.sleep = false;
-        this.paralyze = false;
-    }
-
-    //getter
-    public boolean getBurn(){
-        return this.burn;
-    }
-    public boolean getPoison(){
-        return this.poison;
-    }
-    public boolean getSleep(){
-        return this.sleep;
-    }
-    public boolean getParalyze(){
-        return this.paralyze;
-    }
+    public void burn (double hP, double att);
+    public void poison (double hP);
+    public void sleep (int x);
+    public void paralyze (double speed, boolean y);
 
 }
