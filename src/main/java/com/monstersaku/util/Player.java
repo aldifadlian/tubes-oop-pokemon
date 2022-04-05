@@ -19,7 +19,7 @@ public class Player {
     public String getPlayerName(){
         return this.name;
     }
-    public String getPlayerMonster(){
+    public List<Monster> getPlayerMonster(){
         return this.monsters;
     }
 
