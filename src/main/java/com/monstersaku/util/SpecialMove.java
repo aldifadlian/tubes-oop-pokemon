@@ -1,8 +1,10 @@
+package com.monstersaku.util;
+
 public class SpecialMove extends Move{
     private int basePower;
     
     public SpecialMove(String name, ElementType elementType, int accuracy, int priority, int ammunition, int basePower) {
-        super();
+        super(name, elementType, accuracy, priority, ammunition);
         this.basePower = basePower;
     }
     

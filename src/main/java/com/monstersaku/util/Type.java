@@ -1,3 +1,5 @@
+package com.monstersaku.util;
+
 public class Type {
     private ElementType attack1;
     private ElementType attack2;

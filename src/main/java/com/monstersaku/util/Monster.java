@@ -1,11 +1,16 @@
+package com.monstersaku.util;
+
+import java.util.List;
+import java.util.ArrayList;
+
 public class Monster {
     private String nama;
-    private List<ElemenType> elemenTypes = new ArrayList<ElemenTypes>();
+    private List<ElementType> elemenTypes = new ArrayList<ElementType>();
     private Stats baseStats;
-    private List<Move> moves = new ArrayList<Moves>();
+    private List<Move> moves = new ArrayList<Move>();
 
     /*Kontruktor*/
-    public Monster (String nama, List<ElemenType> elemenTypes, Stats baseStats, List<Move> moves) {
+    public Monster (String nama, List<ElementType> elemenTypes, Stats baseStats, List<Move> moves) {
         this.nama = nama;
         this.elemenTypes = elemenTypes;
         this.baseStats = baseStats;
@@ -16,7 +21,7 @@ public class Monster {
     public String getName(){
         return this.nama;
     }
-    public List<ElemenType> getElemenTypes(){
+    public List<ElementType> getElemenTypes(){
         return this.elemenTypes;
     }
     public Stats getStats(){ 
