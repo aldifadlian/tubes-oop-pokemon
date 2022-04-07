@@ -1,6 +1,6 @@
 package com.monstersaku.util;
 
-public class StatusCondition {
+public class StatusCondition extends Stats {
     //atribut
     private boolean isBurn=false;
     private boolean isPoison=false;
@@ -8,7 +8,8 @@ public class StatusCondition {
     private boolean isParalyze=false;
 
     //konstruktor
-    public StatusCondition(){
+    public StatusCondition(double hP, double att, double def, double spAtt, double spDeff, double spd){
+        super(hP, att, def, spAtt, spDeff, spd);
         this.isBurn=false;
         this.isPoison=false;
         this.isSleep=false;
@@ -26,5 +27,37 @@ public class StatusCondition {
     }
     public boolean getParalyze(){
         return this.isParalyze;
+    }
+    public void ChangeToBurn(){
+        if (this.isBurn == false && this.isPoison == false &&  this.isSleep == false && this.isParalyze==false){
+            this.isBurn=true; 
+        }//else do nothing
+        
+    }
+    public void ChangeToPoison(){
+        if (this.isBurn == false && this.isPoison == false &&  this.isSleep == false && this.isParalyze==false){
+            this.isPoison=true;
+        }//else do nothing
+    }
+    public void ChangeToSleep(){
+        if (this.isBurn == false && this.isPoison == false &&  this.isSleep == false && this.isParalyze==false){
+            this.isSleep=true;
+        }//else do nothing
+    }
+    public void ChangeToParalyze(){
+        if (this.isBurn == false && this.isPoison == false &&  this.isSleep == false && this.isParalyze==false){
+            this.isParalyze=true;
+        }//else do nothing
+    }
+    public double kenaBurn(){
+        return (1/8 * super.getHealthPoint());
+    }
+
+    public double kenaPoison(){
+        return (1/16 * super.getHealthPoint());
+    }
+
+    public double kenaParalyze(){
+        return (1/2 * super.getSpeed());
     }
 }
