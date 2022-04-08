@@ -2,6 +2,7 @@ package com.monstersaku;
 
 import com.monstersaku.util.CSVReader;
 
+import java.util.Scanner;
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
@@ -32,6 +33,25 @@ public class Main {
                 System.out.println();
             } catch (Exception e) {
                 // do nothing
+            }
+        }
+        boolean play = true;
+        Scanner input = new Scanner(System.in);
+        System.out.println("============ WELCOME TO POKEMON =================");
+        System.out.println("");
+
+        while(play) {
+            System.out.printf("Select : ");
+            String command = input.next();
+            if (command.equals("START")) {
+                Menu.start();
+            } else if (command.equals("HELP")) {
+                Menu.help();
+            } else if (command.equals("EXIT")) {
+                Menu.exit();
+                System.exit(0);
+                input.close();
+                play = false;
             }
         }
     }
