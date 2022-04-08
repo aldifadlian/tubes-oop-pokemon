@@ -7,6 +7,7 @@ public class Stats {
 	private double specialAttack;
 	private double specialDefense;
 	private double speed;
+	private double maxHP;
 	
 	// Construktor
 	public Stats(double hP, double att, double def, double spAtt, double spDeff, double spd) {
@@ -16,6 +17,7 @@ public class Stats {
 		specialAttack = spAtt;
 		specialDefense = spDeff;
 		speed = spd;
+		healthPoint = maxHP;
 	}
 
 	// getter & setter healthPoint
@@ -64,5 +66,10 @@ public class Stats {
 	}
 	public double getSpeed() {
 		return speed;
+	}
+
+	// getter & setter maxHP
+	public double getMaxHP() {
+		return maxHP;
 	}
 }

@@ -22,7 +22,7 @@ public class DefaultMove extends Move {
             monsEnemy.getStats().setHealthPoint(0.0);
         }
 
-        //monsOwn.getStats().setHealthPoint(monsOwn.getStats().getHealthPoint() - (monsOwn.getMaxHP())/4);
+        monsOwn.getStats().setHealthPoint(monsOwn.getStats().getHealthPoint() - (monsOwn.getStats().getMaxHP())/4);
 
     }
 }
