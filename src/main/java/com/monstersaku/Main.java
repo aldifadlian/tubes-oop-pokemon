@@ -96,7 +96,18 @@ public class Main {
 
         boolean play = true;
         Scanner input = new Scanner(System.in);
-        System.out.println("============ WELCOME TO MONSTER SAKU! =================");
+        
+        System.out.println("    ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗              ");
+        System.out.println("    ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝              ");
+        System.out.println("    ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗                ");
+        System.out.println("    ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝                ");
+        System.out.println("    ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗              ");
+        System.out.println("    ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝               ");
+        System.out.println("          ╔╦╗╔═╗╔╗╔╔═╗╔╦╗╔═╗╦═╗  ╔═╗╔═╗╦╔═╦ ╦  ╔═╗╔═╗╔╦╗╔═╗                     ");
+        System.out.println("          ║║║║ ║║║║╚═╗ ║ ║╣ ╠╦╝  ╚═╗╠═╣╠╩╗║ ║  ║ ╦╠═╣║║║║╣                      ");
+        System.out.println("          ╩ ╩╚═╝╝╚╝╚═╝ ╩ ╚═╝╩╚═  ╚═╝╩ ╩╩ ╩╚═╝  ╚═╝╩ ╩╩ ╩╚═╝                     ");
+        System.out.println("");                                                                                                   
+                                 
         System.out.println("SELECT MENU:");
         System.out.println(">> START");
         System.out.println(">> HELP");  
