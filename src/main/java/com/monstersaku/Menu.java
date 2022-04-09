@@ -4,30 +4,7 @@ import java.util.Scanner;
 
 public class Menu {
     public static void start() {
-        Player playerOwn;
-        Player playerOpponent;
-        Player winnerPlayer;
-
-        boolean isPlay = true;
-        while (isPlay) {
-            int[] players = {-1, -1};
-            int idRound = 1;
-            
-            boolean isRound = true;
-            int ctr = 1;
-            while (isRound) {
-                
-                System.out.println("Round " + ctr);
-                boolean isTurn = true;
-                while (isTurn) {
-                    System.out.println(playerOwn.getPlayerName() + "'s turn");
-                    System.out.println("");
-                    System.out.println("SELECT: ");
-                    System.out.println(">> MOVE");
-                    System.out.println(">> SWITCH");
-                }
-            }
-        }
+        // mindahin biar ke sini gimana ya
     }
 
     public static void help() {
@@ -63,6 +40,7 @@ public class Menu {
     }
 
     public static void welcome() {
+        System.out.println("");
         System.out.println("    ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗              ");
         System.out.println("    ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝              ");
         System.out.println("    ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗                ");
@@ -75,14 +53,14 @@ public class Menu {
         System.out.println("");                                                                                                   
     }
 
-    public int move() {
+    public static int move() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select move: ");
         int input = scanner.nextInt();
         return input;
     }
 
-    public void switch() {
-        //belom dimasukin
+    public static void switchMonster() {
+        System.out.println("otw nanti");
     }
 }

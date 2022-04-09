@@ -143,8 +143,51 @@ public class Main {
                 pemain1.printNamaMonster();
                 pemain2.printNamaMonster();
 
-                Menu.start();
                 scanPlayer.close();
+
+                Player playerOwn = pemain1;
+                Player playerOpponent = pemain2;
+
+                boolean isPlay = true;
+                while (isPlay) {
+                    int[] players = {-1, -1};
+                    int idRound = 1;
+                    
+                    boolean isRound = true;
+                    int ctr = 1;
+                    while (isRound) {
+                        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                        System.out.println("Round " + ctr);
+                        boolean isTurn = true;
+                        while (isTurn) {
+                            System.out.println(playerOwn.getPlayerName() + "'s turn");
+                            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                            System.out.println("SELECT ACTION: ");
+                            System.out.println(">> MOVE");
+                            System.out.println(">> SWITCH");
+                            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+                            System.out.printf("Select : ");
+                            String command2 = input.nextLine();
+                            if (command2.equals("MOVE")) {
+                                Menu.move();
+                            }
+                            else if (command2.equals("SWITCH")) {
+                                Menu.switchMonster();
+                            }
+
+                            int move = 0;
+                            if (move >= 0) {
+                                isTurn = false;
+                            }
+                        }
+                        idRound = 2;
+                        if (idRound >= 2) {
+                            isRound = false;
+                        }
+                    }
+                    isPlay = false;
+                }
             } else if (command.equals("HELP")) {
                 Menu.help();
             } else if (command.equals("EXIT")) {
