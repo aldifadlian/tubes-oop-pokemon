@@ -96,18 +96,7 @@ public class Main {
 
         boolean play = true;
         Scanner input = new Scanner(System.in);
-        
-        System.out.println("    ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗              ");
-        System.out.println("    ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝              ");
-        System.out.println("    ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗                ");
-        System.out.println("    ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝                ");
-        System.out.println("    ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗              ");
-        System.out.println("    ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝               ");
-        System.out.println("          ╔╦╗╔═╗╔╗╔╔═╗╔╦╗╔═╗╦═╗  ╔═╗╔═╗╦╔═╦ ╦  ╔═╗╔═╗╔╦╗╔═╗                     ");
-        System.out.println("          ║║║║ ║║║║╚═╗ ║ ║╣ ╠╦╝  ╚═╗╠═╣╠╩╗║ ║  ║ ╦╠═╣║║║║╣                      ");
-        System.out.println("          ╩ ╩╚═╝╝╚╝╚═╝ ╩ ╚═╝╩╚═  ╚═╝╩ ╩╩ ╩╚═╝  ╚═╝╩ ╩╩ ╩╚═╝                     ");
-        System.out.println("");                                                                                                   
-                                 
+        Menu.welcome();
         System.out.println("SELECT MENU:");
         System.out.println(">> START");
         System.out.println(">> HELP");  
@@ -154,7 +143,7 @@ public class Main {
                 pemain1.printNamaMonster();
                 pemain2.printNamaMonster();
 
-                play = false;
+                Menu.start();
                 scanPlayer.close();
             } else if (command.equals("HELP")) {
                 Menu.help();
