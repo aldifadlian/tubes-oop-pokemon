@@ -11,10 +11,9 @@ public abstract class Move{
     private int priority;
     private int ammunition;
     private String target;
-    private int effect;
 
     //konstruktor
-    public Move(int id, String name, ElementType elementType, int accuracy, int priority, int ammunition, String target, int effect){
+    public Move(int id, String name, ElementType elementType, int accuracy, int priority, int ammunition, String target){
         this.id = id;
         this.name = name;
         this.elementType = elementType;
@@ -22,7 +21,6 @@ public abstract class Move{
         this.priority = priority;
         this.ammunition = ammunition;
         this.target = target;
-        this.effect = effect;
     }
 
     //setter
@@ -48,10 +46,6 @@ public abstract class Move{
 
     public void setAmmunition(int ammunition) {
         this.ammunition = ammunition;
-    }
-
-    public void setEffect(int effect) {
-        this.effect = effect;
     }
 
     //getter 
@@ -81,10 +75,6 @@ public abstract class Move{
 
     public String getTarget() {
         return this.target;
-    }
-
-    public int getEffect() {
-        return this.effect;
     }
 
     public Double elementEffectivity(Monster elMonster){

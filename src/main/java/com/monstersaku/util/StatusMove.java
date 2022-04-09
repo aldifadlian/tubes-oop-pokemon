@@ -2,10 +2,12 @@ package com.monstersaku.util;
 
 public class StatusMove extends Move{
     private String attType; 
+    private Double effectMove;
     
-    public StatusMove(int id, String name, ElementType elementType, int accuracy, int priority, int ammunition, String target, int effect, String attType){
-        super(id, name, elementType, accuracy, priority, ammunition, target, effect);
+    public StatusMove(int id, String name, ElementType elementType, int accuracy, int priority, int ammunition, String target, String attType, Double effectMove){
+        super(id, name, elementType, accuracy, priority, ammunition, target);
         this.attType = attType;
+        this.effectMove = effectMove;
     }
 
     public void setAttType(String attType){
@@ -14,6 +16,14 @@ public class StatusMove extends Move{
 
     public String getAttType(){
         return this.attType;
+    }
+
+    public void setEffectMove(Double effectMove){
+        this.effectMove = effectMove;
+    }
+
+    public Double getEffectMove(){
+        return this.effectMove;
     }
 
     public void damage(Monster monsOwn, Monster monsEnemy){

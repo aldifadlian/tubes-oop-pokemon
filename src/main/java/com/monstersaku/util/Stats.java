@@ -17,7 +17,7 @@ public class Stats {
 		specialAttack = spAtt;
 		specialDefense = spDeff;
 		speed = spd;
-		healthPoint = maxHP;
+		maxHP = hP;
 	}
 
 	// getter & setter healthPoint
