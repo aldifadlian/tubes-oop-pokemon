@@ -12,94 +12,126 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
+    private static final List<String> CSV_FILE_PATHS = Collections.unmodifiableList(Arrays.asList(
+        "configs/monsterpool.csv",
+        "configs/movepool.csv",
+        "configs/element-type-effectivity-chart.csv"));
+
     public static void main(String[] args) {
         ArrayList<Monster> listMonster = new ArrayList<Monster>();
         ArrayList<Move> listMove = new ArrayList<Move>();
         // baca csv
-        try{
-            CSVReader bacaMoves = new CSVReader(new File(Main.class.getResource("C:/Users/Acer/Documents/NGODING SKUY/java/tubes-oop-pokemon/src/main/resources/com/monstersaku/configs/movepool.csv").toURI()), ";");
-            bacaMoves.setSkipHeader(true);
-            List<String[]> isiMoves = bacaMoves.read();
-            for (String[] line : isiMoves) {
-                Integer idMove = Integer.parseInt(line[0]);
-                MoveType moveType = MoveType.valueOf(line[1]);
-                String namaMove = line[2];
-                ElementType elementType = ElementType.valueOf(line[3]);
-                Integer accuracyMove = Integer.parseInt(line[4]);
-                Integer priorityMove = Integer.parseInt(line[5]);
-                Integer ammunitionMove = Integer.parseInt(line[6]);
-                String targetMove = line[7];
-                if(moveType.equals(MoveType.STATUS)){
-                    Integer effectMove = Integer.parseInt(line[8]);
-                    String healthPointEffect = line[9];
-                    StatusMove statusMove = new StatusMove(idMove, namaMove, elementType, accuracyMove, priorityMove, ammunitionMove, targetMove, effectMove, healthPointEffect);
-                    listMove.add(statusMove);
-                }
-                else if (moveType.equals(MoveType.NORMAL)) {
-                    Integer basePower = Integer.parseInt(line[8]);
-                    NormalMove normalMove = new NormalMove(idMove, namaMove, elementType, accuracyMove, priorityMove, ammunitionMove, targetMove, basePower);
-                    listMove.add(normalMove);
-                }
-                else if (moveType.equals(MoveType.SPECIAL)) {
-                    Integer basePower = Integer.parseInt(line[8]);
-                    SpecialMove specialMove = new SpecialMove(idMove, namaMove, elementType, accuracyMove, priorityMove, ammunitionMove, targetMove, basePower);
-                    listMove.add(specialMove);
-                }
-            }
-            // monster
-            CSVReader bacaMonster = new CSVReader(new File(Main.class.getResource("C:/Users/Acer/Documents/NGODING SKUY/java/tubes-oop-pokemon/src/main/resources/com/monstersaku/configs/monsterpool.csv").toURI()), ";");
-            bacaMonster.setSkipHeader(true);
-            List<String[]> isiMonster = bacaMonster.read();
-            for (String[] line : isiMonster){
-                String namaMons = line[1];
-                ArrayList<ElementType> elementTypes = new ArrayList<ElementType>();
-                String eltypeMons = line[2];
-                String[] arrayEltype = eltypeMons.split(",",7);
-                for(String eltype : arrayEltype){
-                    if(eltype.equals("NORMAL")){
-                        elementTypes.add(ElementType.NORMAL);
-                    }
-                    if(eltype.equals("FIRE")){
-                        elementTypes.add(ElementType.FIRE);
-                    }
-                    if(eltype.equals("WATER")){
-                        elementTypes.add(ElementType.WATER);
-                    }
-                    if(eltype.equals("GRASS")){
-                        elementTypes.add(ElementType.GRASS);
-                    }
-                }
-                String statsMons = line[3];
-                String[] arrayStats = statsMons.split(",",7);
-                ArrayList<Double> arrayStatsList = new ArrayList<Double>();
-                for(String statsArray : arrayStats){
-                    Double eachStat = Double.parseDouble(statsArray);
-                    arrayStatsList.add(eachStat);
-                }
-                Stats baseStatsMons = new Stats(arrayStatsList.get(0), arrayStatsList.get(1), arrayStatsList.get(2), arrayStatsList.get(3), arrayStatsList.get(4), arrayStatsList.get(5));
-                
-                String moveMons = line[4];
-                String[] arrayMove = moveMons.split(",",7);
-                ArrayList<Move> arrMoveMons = new ArrayList<Move>();
-                DefaultMove defaultMove = new DefaultMove();
-                arrMoveMons.add(defaultMove);
-                for(int i = 0; i < arrayMove.length; i++){
-                    arrMoveMons.add(listMove.get(Integer.valueOf(arrayMove[i])-1));
-                }
+        for (String fileName : CSV_FILE_PATHS) {
+            try{
+                System.out.printf("Filename: %s\n", fileName);
+                CSVReader bacaMoves = new CSVReader(new File(Main.class.getResource("configs/movepool.csv").toURI()), ";");
+                bacaMoves.setSkipHeader(true);
+                List<String[]> isiMoves = bacaMoves.read();
 
-                System.out.println();
-                Integer idMons = Integer.parseInt(line[0]);
-                Monster buatMonster = new Monster(idMons, namaMons, elementTypes, baseStatsMons, arrMoveMons);
-                listMonster.add(buatMonster);
-                System.out.printf(" WOYYYYYYYYYYY %s", buatMonster);
+                System.out.println("=========== CONTENT START ===========");
+                for (String[] line : isiMoves) {
+                    for (String word : line) {
+                        System.out.printf("%s ", word);
+                    }
+                    System.out.println();
+                }
+                System.out.println("=========== CONTENT END =============\n");
+
+                for (String[] line : isiMoves) {
+                    Integer idMove = Integer.parseInt(line[0]);
+                    MoveType moveType = MoveType.valueOf(line[1]);
+                    String namaMove = line[2];
+                    ElementType elementType = ElementType.valueOf(line[3]);
+                    Integer accuracyMove = Integer.parseInt(line[4]);
+                    Integer priorityMove = Integer.parseInt(line[5]);
+                    Integer ammunitionMove = Integer.parseInt(line[6]);
+                    String targetMove = line[7];
+                    if(moveType.equals(MoveType.STATUS)){
+                        Integer effectMove = Integer.parseInt(line[8]);
+                        String healthPointEffect = line[9];
+                        StatusMove statusMove = new StatusMove(idMove, namaMove, elementType, accuracyMove, priorityMove, ammunitionMove, targetMove, effectMove, healthPointEffect);
+                        listMove.add(statusMove);
+                    }
+                    else if (moveType.equals(MoveType.NORMAL)) {
+                        Integer basePower = Integer.parseInt(line[8]);
+                        NormalMove normalMove = new NormalMove(idMove, namaMove, elementType, accuracyMove, priorityMove, ammunitionMove, targetMove, basePower);
+                        listMove.add(normalMove);
+                    }
+                    else if (moveType.equals(MoveType.SPECIAL)) {
+                        Integer basePower = Integer.parseInt(line[8]);
+                        SpecialMove specialMove = new SpecialMove(idMove, namaMove, elementType, accuracyMove, priorityMove, ammunitionMove, targetMove, basePower);
+                        listMove.add(specialMove);
+                    }
+                }
+                // monster
+                CSVReader bacaMonster = new CSVReader(new File(Main.class.getResource("configs/monsterpool.csv").toURI()), ";");
+                bacaMonster.setSkipHeader(true);
+                List<String[]> isiMonster = bacaMonster.read();
+
+                System.out.println("=========== CONTENT START ===========");
+                for (String[] line : isiMonster) {
+                    for (String word : line) {
+                        System.out.printf("%s ", word);
+                    }
+                    System.out.println();
+                }
+                System.out.println("=========== CONTENT END =============\n");
+
+                for (String[] line : isiMonster){
+                    String namaMons = line[1];
+                    ArrayList<ElementType> elementTypes = new ArrayList<ElementType>();
+                    String eltypeMons = line[2];
+                    String[] arrayEltype = eltypeMons.split(",",7);
+                    for(String eltype : arrayEltype){
+                        if(eltype.equals("NORMAL")){
+                            elementTypes.add(ElementType.NORMAL);
+                        }
+                        if(eltype.equals("FIRE")){
+                            elementTypes.add(ElementType.FIRE);
+                        }
+                        if(eltype.equals("WATER")){
+                            elementTypes.add(ElementType.WATER);
+                        }
+                        if(eltype.equals("GRASS")){
+                            elementTypes.add(ElementType.GRASS);
+                        }
+                    }
+                    String statsMons = line[3];
+                    String[] arrayStats = statsMons.split(",",7);
+                    ArrayList<Double> arrayStatsList = new ArrayList<Double>();
+                    for(String statsArray : arrayStats){
+                        Double eachStat = Double.parseDouble(statsArray);
+                        arrayStatsList.add(eachStat);
+                    }
+                    Stats baseStatsMons = new Stats(arrayStatsList.get(0), arrayStatsList.get(1), arrayStatsList.get(2), arrayStatsList.get(3), arrayStatsList.get(4), arrayStatsList.get(5));
+                    
+                    String moveMons = line[4];
+                    String[] arrayMove = moveMons.split(",",7);
+                    ArrayList<Move> arrMoveMons = new ArrayList<Move>();
+                    DefaultMove defaultMove = new DefaultMove();
+                    arrMoveMons.add(defaultMove);
+                    for(int i = 0; i < arrayMove.length; i++){
+                        arrMoveMons.add(listMove.get(Integer.valueOf(arrayMove[i])-1));
+                    }
+
+                    System.out.println();
+                    Integer idMons = Integer.parseInt(line[0]);
+                    Monster buatMonster = new Monster(idMons, namaMons, elementTypes, baseStatsMons, arrMoveMons);
+                    listMonster.add(buatMonster);
+                    System.out.printf(" WOYYYYYYYYYYY %s", buatMonster);
+                }
+            } catch (Exception e){
+                e.getMessage();
             }
-        } catch (Exception e){
-            e.getMessage();
         }
 
         boolean play = true;
         Scanner input = new Scanner(System.in);
-        System.out.println("============ WELCOME TO POKEMON =================");
+        System.out.println("============ WELCOME TO MONSTER SAKU! =================");
+        System.out.println("SELECT MENU:");
+        System.out.println(">> START");
+        System.out.println(">> HELP");  
+        System.out.println(">> EXIT");
         System.out.println("");
 
         while(play) {
