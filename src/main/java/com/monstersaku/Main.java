@@ -17,6 +17,35 @@ public class Main {
         ArrayList<Move> listMove = new ArrayList<Move>();
         // baca csv
         try{
+            CSVReader bacaMoves = new CSVReader(new File(Main.class.getResource("C:/Users/Acer/Documents/NGODING SKUY/java/tubes-oop-pokemon/src/main/resources/com/monstersaku/configs/movepool.csv").toURI()), ";");
+            bacaMoves.setSkipHeader(true);
+            List<String[]> isiMoves = bacaMoves.read();
+            for (String[] line : isiMoves) {
+                Integer idMove = Integer.parseInt(line[0]);
+                MoveType moveType = MoveType.valueOf(line[1]);
+                String namaMove = line[2];
+                ElementType elementType = ElementType.valueOf(line[3]);
+                Integer accuracyMove = Integer.parseInt(line[4]);
+                Integer priorityMove = Integer.parseInt(line[5]);
+                Integer ammunitionMove = Integer.parseInt(line[6]);
+                String targetMove = line[7];
+                if(moveType.equals(MoveType.STATUS)){
+                    Integer effectMove = Integer.parseInt(line[8]);
+                    String healthPointEffect = line[9];
+                    StatusMove statusMove = new StatusMove(idMove, namaMove, elementType, accuracyMove, priorityMove, ammunitionMove, targetMove, effectMove, healthPointEffect);
+                    listMove.add(statusMove);
+                }
+                else if (moveType.equals(MoveType.NORMAL)) {
+                    Integer basePower = Integer.parseInt(line[8]);
+                    NormalMove normalMove = new NormalMove(idMove, namaMove, elementType, accuracyMove, priorityMove, ammunitionMove, targetMove, basePower);
+                    listMove.add(normalMove);
+                }
+                else if (moveType.equals(MoveType.SPECIAL)) {
+                    Integer basePower = Integer.parseInt(line[8]);
+                    SpecialMove specialMove = new SpecialMove(idMove, namaMove, elementType, accuracyMove, priorityMove, ammunitionMove, targetMove, basePower);
+                    listMove.add(specialMove);
+                }
+            }
             // monster
             CSVReader bacaMonster = new CSVReader(new File(Main.class.getResource("C:/Users/Acer/Documents/NGODING SKUY/java/tubes-oop-pokemon/src/main/resources/com/monstersaku/configs/monsterpool.csv").toURI()), ";");
             bacaMonster.setSkipHeader(true);
@@ -62,6 +91,7 @@ public class Main {
                 Integer idMons = Integer.parseInt(line[0]);
                 Monster buatMonster = new Monster(idMons, namaMons, elementTypes, baseStatsMons, arrMoveMons);
                 listMonster.add(buatMonster);
+                System.out.printf(" WOYYYYYYYYYYY %s", buatMonster);
             }
         } catch (Exception e){
             e.getMessage();
@@ -83,9 +113,9 @@ public class Main {
                 String namaPemain2 = scanPlayer.nextLine();
                 System.out.printf("%nPemain 1 : %s", namaPemain1);
                 System.out.printf("%nPemain 2 : %s%n", namaPemain2);
-                System.out.printf("%s",listMonster.size());
                 Random acak = new Random();
                 Integer batasMonster = listMonster.size();
+                System.out.printf("%s",batasMonster);
                 ArrayList<Monster> listMonsPemain1 = new ArrayList<Monster>();
                 for(int i = 0; i < 6; i++){
                     Integer acakMonster = acak.nextInt(batasMonster);
