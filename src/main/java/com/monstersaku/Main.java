@@ -143,7 +143,7 @@ public class Main {
                 pemain1.printNamaMonster();
                 pemain2.printNamaMonster();
 
-                scanPlayer.close();
+                //scanPlayer.close();
 
                 Player playerOwn = pemain1;
                 Player playerOpponent = pemain2;
