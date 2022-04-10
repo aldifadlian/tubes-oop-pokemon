@@ -27,6 +27,10 @@ public class Menu {
         System.out.println("   c. SLEEP");
         System.out.println("   d. PARALYZE");
         System.out.println("10. Permainan berakhir ketika salah satu pemain tidak memiliki monster \n    untuk dipertarungkan dan pemain tersebut dinyatakan kalah");
+        System.out.println("");
+        System.out.println("SELECT MENU:");
+        System.out.println(">> START");
+        System.out.println(">> EXIT");
     }
 
     public static void exit() {
