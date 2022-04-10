@@ -160,23 +160,18 @@ public class Main {
                         System.out.println("Round " + ctr);
                         boolean isTurn = true;
                         while (isTurn) {
+                            int move = 0;
                             System.out.println(playerOwn.getPlayerName() + "'s turn");
                             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                             System.out.println("SELECT ACTION: ");
                             System.out.println(">> MOVE");
                             System.out.println(">> SWITCH");
+                            System.out.println(">> VIEW MONSTER INFO");
+                            System.out.println(">> VIEW GAME INFO");
                             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-                            System.out.printf("Select : ");
-                            String command2 = input.nextLine();
-                            if (command2.equals("MOVE")) {
-                                Menu.move();
-                            }
-                            else if (command2.equals("SWITCH")) {
-                                Menu.switchMonster();
-                            }
+                            Menu.action(playerOwn, playerOpponent);
 
-                            int move = 0;
                             if (move >= 0) {
                                 isTurn = false;
                             }

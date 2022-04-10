@@ -45,4 +45,15 @@ public class Player {
             System.out.printf("%s. %s \tHP: %s%n", i,  monster.getName(), monster.getStats().getHealthPoint());
         }
     }
+
+    public static int move() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Select move: ");
+        int input = scanner.nextInt();
+        return input;
+    }
+    
+    public static void switchMonster() {
+        System.out.println("otw nanti");
+    }
 }

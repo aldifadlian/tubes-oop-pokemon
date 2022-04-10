@@ -53,14 +53,37 @@ public class Menu {
         System.out.println("");                                                                                                   
     }
 
-    public static int move() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Select move: ");
-        int input = scanner.nextInt();
-        return input;
+    public static int action(Player playerOwn, Player playerOpponent){
+        boolean isValid = true;
+        int act = -1;
+
+        Scanner scanAction = new Scanner(System.in);
+
+        while(isValid) {
+            System.out.printf("Select : ");
+            String action = scanAction.nextLine();
+            if (action.equals("MOVE")) {
+                act = playerOwn.move();
+                isValid = false;
+            }
+            else if (action.equals("SWITCH")) {
+                playerOwn.switchMonster();
+                act = 0;
+                isValid = false;
+            }
+            else if (action.equals("VIEW MONSTER INFO")) {
+                // belum
+                isValid = false;
+            }
+            else if (action.equals("VIEW GAME INFO")) {
+                // belum
+                isValid = false;
+            }
+            else {
+                System.out.println("Input action salah. Harap ulangi!");
+            }
+        }
+        return act;
     }
 
-    public static void switchMonster() {
-        System.out.println("otw nanti");
-    }
 }
