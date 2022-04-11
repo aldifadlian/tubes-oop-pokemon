@@ -55,12 +55,11 @@ public class Player {
 
     public void printNamaMonster(){
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-        System.out.printf("%s's Monsters%n", getPlayerName());
-        System.out.printf("Nama monster :%n");
+        System.out.printf("Daftar Monster %s%n", getPlayerName());
         int i = 0;
         for(Monster monster : monsters){
             i++;
-            System.out.printf("%s. %s \tHP: %s%n", i,  monster.getName(), monster.getStats().getHealthPoint());
+            System.out.printf("%s. %s%n", i,  monster.getName());
         }
     }
 
