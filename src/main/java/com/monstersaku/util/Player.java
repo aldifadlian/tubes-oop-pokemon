@@ -5,12 +5,17 @@ import java.util.*;
 public class Player {
     private String name;
     private int jumlahMons;
+    private Monster activeMonster;
     private List<Monster> monsters = new ArrayList<Monster>(6);
+    private List<Monster> passiveMonsters = new ArrayList<Monster>();
 
     public Player(String name, List<Monster> monsters) {
         this.name = name;
         this.jumlahMons = 6;
         this.monsters = monsters;
+        this.activeMonster = this.monsters.get(0);
+        this.passiveMonsters.addAll(monsters);
+        this.passiveMonsters.remove(0);
     }
 
     //getter
@@ -23,6 +28,13 @@ public class Player {
     public int getJumlahMons(){
         return this.jumlahMons;
     }
+    public Monster getActiveMonster() {
+        return this.activeMonster;
+    }
+    public List<Monster> getPassiveMonster() {
+        return this.passiveMonsters;
+    }
+
 
     //setter
     public void setPlayerName(String name){
@@ -34,14 +46,21 @@ public class Player {
     public void setJumlahMons(){
         this.jumlahMons = jumlahMons;
     }
+    public void setActiveMonster(Monster activeMonster){
+        this.activeMonster = activeMonster;
+    }
+    public void setPassiveMonster(List<Monster> passiveMonsters){
+        this.passiveMonsters = passiveMonsters;
+    }
 
     public void printNamaMonster(){
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-        System.out.printf("Daftar Monster %s%n", getPlayerName());
+        System.out.printf("%s's Monsters%n", getPlayerName());
+        System.out.printf("Nama monster :%n");
         int i = 0;
         for(Monster monster : monsters){
             i++;
-            System.out.printf("%s. %s%n", i,  monster.getName());
+            System.out.printf("%s. %s \tHP: %s%n", i,  monster.getName(), monster.getStats().getHealthPoint());
         }
     }
 
@@ -52,8 +71,33 @@ public class Player {
         return input;
     }
     
-    public static void switchMonster() {
-        System.out.println("otw nanti");
+    public void switchMonster() {
+        System.out.println("SWITCH MONSTER");
+        printNamaMonster();
+        boolean isInputValid = true;
+        while (isInputValid) {
+            if (this.passiveMonsters.size() > 0) {
+                Scanner scanSwitch = new Scanner(System.in);
+                System.out.printf("SELECT MONSTER TO SWITCH: ");
+                int inputSwitch = scanSwitch.nextInt();
+                if (inputSwitch >= 1 && inputSwitch <= this.passiveMonsters.size()){
+                    Monster temp = activeMonster;
+                    this.activeMonster = this.passiveMonsters.get(inputSwitch-1);
+                    this.passiveMonsters.remove(inputSwitch-1);
+                    this.passiveMonsters.add(temp);
+                    System.out.println("test");
+                    System.out.println("Kamu memilih "+getActiveMonster());
+                    isInputValid = false;
+                }
+                else {
+                    System.out.println("Input salah, silakan ulangi untuk monster yang tersedia!");
+                }
+            }
+            else {
+                System.out.println("Tidak bisa melakukan switch karena monster habis");
+            }
+
+        }
     }
 
     public void viewMonsters(){
