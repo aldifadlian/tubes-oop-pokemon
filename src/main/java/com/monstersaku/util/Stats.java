@@ -72,4 +72,14 @@ public class Stats {
 	public double getMaxHP() {
 		return maxHP;
 	}
+
+	public void printBaseStats(){
+        System.out.printf("<Base Stats Monter> %n");
+        System.out.printf("Health Point \t: %s%n", this.healthPoint);
+        System.out.printf("Attack  \t: %s%n", this.attack);
+        System.out.printf("Defense \t: %s%n", this.defense);
+        System.out.printf("Special Attack \t: %s%n", this.specialAttack);
+        System.out.printf("Special Defense\t: %s%n", this.specialDefense);
+        System.out.printf("Speed   \t: %s%n", this.speed);
+    }
 }

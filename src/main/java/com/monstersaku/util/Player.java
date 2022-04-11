@@ -37,12 +37,11 @@ public class Player {
 
     public void printNamaMonster(){
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-        System.out.printf("%s's Monsters%n", getPlayerName());
-        System.out.printf("Nama monster :%n");
+        System.out.printf("Daftar Monster %s%n", getPlayerName());
         int i = 0;
         for(Monster monster : monsters){
             i++;
-            System.out.printf("%s. %s \tHP: %s%n", i,  monster.getName(), monster.getStats().getHealthPoint());
+            System.out.printf("%s. %s%n", i,  monster.getName());
         }
     }
 
@@ -55,5 +54,34 @@ public class Player {
     
     public static void switchMonster() {
         System.out.println("otw nanti");
+    }
+
+    public void viewMonsters(){
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        System.out.printf("Daftar Monster %s%n", getPlayerName());
+        int i = 0;
+        for(Monster monster : monsters){
+            i++;
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.printf("Monster %s%n", i);
+            System.out.println("");
+            System.out.printf("Nama Monster \t: %s%n", monster.getName());
+            List<ElementType> elementTypes = monster.getElemenTypes();
+            for (ElementType elementType : elementTypes){
+                if(elementType.equals(ElementType.NORMAL)){
+                    System.out.printf("Element Type \t: %s%n", ElementType.NORMAL);
+                }
+                else if(elementType.equals(ElementType.FIRE)){
+                    System.out.printf("Element Type \t: %s%n", ElementType.FIRE);
+                }
+                else if(elementType.equals(ElementType.WATER)){
+                    System.out.printf("Element Type \t: %s%n", ElementType.WATER);
+                }   
+                else if(elementType.equals(ElementType.GRASS)){
+                    System.out.printf("Element Type \t: %s%n", ElementType.GRASS);
+                } 
+            }
+            monster.getStats().printBaseStats();
+        }
     }
 }
