@@ -13,9 +13,6 @@ public class Player {
         this.name = name;
         this.jumlahMons = 6;
         this.monsters = monsters;
-        this.activeMonster = this.monsters.get(0);
-        this.passiveMonsters.addAll(monsters);
-        this.passiveMonsters.remove(0);
     }
 
     //getter
@@ -81,6 +78,28 @@ public class Player {
         return input;
     }
     
+    public void chooseMonster(){
+        this.passiveMonsters.addAll(monsters);
+        System.out.println("CHOOSE YOUR MONSTER");
+        printNamaMonster();
+        Scanner scanChoose = new Scanner(System.in);
+        System.out.printf("SELECT MONSTER TO FIGHT: ");
+        int inputChoose = scanChoose.nextInt();
+        boolean isInputValid = true;
+        while (isInputValid) {
+            if (inputChoose >= 1 && inputChoose <= this.passiveMonsters.size()){
+                activeMonster = this.monsters.get(inputChoose-1);
+                this.passiveMonsters.remove(inputChoose-1);
+                System.out.println("Kamu memilih "+ activeMonster.getName());
+                isInputValid = false;
+            }
+            else {
+                System.out.println("Input salah, silakan ulangi untuk monster yang tersedia!");
+                isInputValid = false;
+            }
+        }
+    }
+
     public void switchMonster() {
         System.out.println("SWITCH MONSTER");
         printNamaPassiveMonster();
