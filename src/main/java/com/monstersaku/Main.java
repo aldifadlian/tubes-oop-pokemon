@@ -140,16 +140,14 @@ public class Main {
                 Player pemain1 = new Player(namaPemain1, listMonsPemain1);
                 Player pemain2 = new Player(namaPemain2, listMonsPemain2);
 
-                pemain1.printNamaMonster();
-                pemain2.printNamaMonster();
-
                 //scanPlayer.close();
 
-                Player playerOwn = pemain1;
+                Player playerPlay = pemain1;
                 Player playerOpponent = pemain2;
 
                 boolean isPlay = true;
                 while (isPlay) {
+                    System.out.println("GAME START!");
                     int[] players = {-1, -1};
                     int idRound = 1;
                     
@@ -158,10 +156,12 @@ public class Main {
                     while (isRound) {
                         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                         System.out.println("Round " + ctr);
+                        System.out.println(playerPlay.getPlayerName() + "'s turn");
+                        playerPlay.chooseMonster();
+                        
                         boolean isTurn = true;
                         while (isTurn) {
-                            int move = 0;
-                            System.out.println(playerOwn.getPlayerName() + "'s turn");
+                            int act = 0;
                             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                             System.out.println("SELECT ACTION: ");
                             System.out.println(">> MOVE");
@@ -170,9 +170,9 @@ public class Main {
                             System.out.println(">> VIEW GAME INFO");
                             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-                            Menu.action(playerOwn, playerOpponent);
+                            act = Menu.action(playerPlay, playerOpponent);
 
-                            if (move >= 0) {
+                            if (act > 0) {
                                 isTurn = false;
                             }
                         }
