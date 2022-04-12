@@ -29,7 +29,7 @@ public class StatusMove extends Move{
     }
 
     public void damage(Monster monsOwn, Monster monsEnemy){
-        if (super.getTarget().equals("ENEMY"))
+        if (super.getTarget().equals("ENEMY")){
             if (this.getAttType().equals("Burn")){
                 double finalHp = monsEnemy.getStats().getMaxHP() - effectMove;
                 monsEnemy.getStats().setHealthPoint(finalHp);
@@ -72,5 +72,11 @@ public class StatusMove extends Move{
                     System.out.printf("%s sudah mendapatkan efek lain.%n", monsEnemy.getName());
                 }
             }
+        }
+        else if(super.getTarget().equals("OWN")){
+            double finalHp = monsOwn.getStats().getMaxHP() - ((effectMove * monsOwn.getStats().getMaxHP())/100);
+            monsOwn.getStats().setHealthPoint(finalHp);
+            System.out.println("Melakukan HEAL, HP bertambah");
+        }
     }
 }
