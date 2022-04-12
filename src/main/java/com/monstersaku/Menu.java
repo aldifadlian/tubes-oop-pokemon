@@ -58,7 +58,7 @@ public class Menu {
         System.out.println("");                                                                                                   
     }
 
-    public static int action(Player playerOwn, Player playerOpponent){
+    public static int action(Player playerPlay, Player playerOpponent){
         boolean isValid = true;
         int act = -1;
 
@@ -68,27 +68,26 @@ public class Menu {
             System.out.printf("Select : ");
             String action = scanAction.nextLine();
             if (action.equals("MOVE")) {
-                act = playerOwn.move();
+                act = 1;
                 isValid = false;
             }
             else if (action.equals("SWITCH")) {
-                playerOwn.switchMonster();
+                playerPlay.switchMonster();
                 act = 0;
                 isValid = false;
             }
             else if (action.equals("VIEW MONSTER INFO")) {
-                playerOwn.viewMonsters();
-                playerOpponent.viewMonsters();
-                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                System.out.println("SELECT ACTION: ");
-                System.out.println(">> MOVE");
-                System.out.println(">> SWITCH");
-                System.out.println(">> VIEW GAME INFO");
-                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                playerPlay.viewMonsters();
                 isValid = false;
             }
             else if (action.equals("VIEW GAME INFO")) {
-                // belum
+                System.out.println("Info player " + playerPlay.getPlayerName());
+                playerPlay.printInfoActiveMonster();
+                playerPlay.printInfoPassiveMonster();
+                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+                System.out.println("Info player " + playerOpponent.getPlayerName());
+                playerOpponent.printInfoActiveMonster();
+                playerOpponent.printInfoPassiveMonster();
                 isValid = false;
             }
             else {
