@@ -63,6 +63,17 @@ public class Player {
         }
     }
 
+    public void printNamaPassiveMonster(){
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
+        System.out.printf("%s's Monsters%n", getPlayerName());
+        System.out.printf("Nama monster :%n");
+        int i = 0;
+        for(Monster monster : passiveMonsters){
+            i++;
+            System.out.printf("%s. %s \tHP: %s%n", i,  monster.getName(), monster.getStats().getHealthPoint());
+        }
+    }
+
     public static int move() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Select move: ");
@@ -72,7 +83,7 @@ public class Player {
     
     public void switchMonster() {
         System.out.println("SWITCH MONSTER");
-        printNamaMonster();
+        printNamaPassiveMonster();
         boolean isInputValid = true;
         while (isInputValid) {
             if (this.passiveMonsters.size() > 0) {
@@ -80,12 +91,11 @@ public class Player {
                 System.out.printf("SELECT MONSTER TO SWITCH: ");
                 int inputSwitch = scanSwitch.nextInt();
                 if (inputSwitch >= 1 && inputSwitch <= this.passiveMonsters.size()){
-                    Monster temp = activeMonster;
-                    this.activeMonster = this.passiveMonsters.get(inputSwitch-1);
+                    this.passiveMonsters.add(activeMonster);
+                    activeMonster = this.passiveMonsters.get(inputSwitch-1);
                     this.passiveMonsters.remove(inputSwitch-1);
-                    this.passiveMonsters.add(temp);
-                    System.out.println("test");
-                    System.out.println("Kamu memilih "+getActiveMonster());
+                    System.out.println("Kamu memilih "+ activeMonster.getName());
+                    printNamaPassiveMonster();
                     isInputValid = false;
                 }
                 else {
@@ -94,6 +104,7 @@ public class Player {
             }
             else {
                 System.out.println("Tidak bisa melakukan switch karena monster habis");
+                isInputValid = false;
             }
 
         }
