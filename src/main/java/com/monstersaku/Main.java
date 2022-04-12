@@ -147,18 +147,45 @@ public class Main {
 
                 boolean isPlay = true;
                 while (isPlay) {
-                    System.out.println("GAME START!");
+                    System.out.println("");
+                    System.out.println("==== GAME START! ====");
+                    System.out.println("");
+
+                    try {
+                        System.out.println("Randomize Moster Player!");
+                        Thread.sleep(1000);
+                        playerPlay.printInfoMonster();
+                        Thread.sleep(1000);
+                        playerOpponent.printInfoMonster();
+                        Thread.sleep(1000);
+                        System.out.println("");
+                        System.out.println("READY SET GO!!!");
+                        System.out.println("");
+                        Thread.sleep(1000);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+
                     int[] players = {-1, -1};
                     int idRound = 1;
                     
                     boolean isRound = true;
                     int ctr = 1;
                     while (isRound) {
+                        if (ctr%2 != 0){
+                            playerPlay = pemain1;
+                            playerOpponent = pemain2;
+                        }
+                        else if (ctr%2 == 0){
+                            playerPlay = pemain2;
+                            playerOpponent = pemain1;
+                        }
+
                         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                        System.out.println("Round " + ctr);
+                        System.out.println("Round "+ctr);
                         System.out.println(playerPlay.getPlayerName() + "'s turn");
                         playerPlay.chooseMonster();
-                        
+
                         boolean isTurn = true;
                         while (isTurn) {
                             int act = 0;
@@ -176,10 +203,7 @@ public class Main {
                                 isTurn = false;
                             }
                         }
-                        idRound = 2;
-                        if (idRound >= 2) {
-                            isRound = false;
-                        }
+                        ctr++;
                     }
                     isPlay = false;
                 }
