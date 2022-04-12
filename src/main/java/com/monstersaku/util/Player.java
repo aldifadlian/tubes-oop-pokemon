@@ -13,6 +13,7 @@ public class Player {
         this.name = name;
         this.jumlahMons = 6;
         this.monsters = monsters;
+        this.passiveMonsters.addAll(monsters);
     }
 
     //getter
@@ -50,20 +51,30 @@ public class Player {
         this.passiveMonsters = passiveMonsters;
     }
 
-    public void printNamaMonster(){
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-        System.out.printf("Daftar Monster %s%n", getPlayerName());
+    public void printInfoMonster(){
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.printf("Daftar Monster Player %s%n", getPlayerName());
         int i = 0;
         for(Monster monster : monsters){
             i++;
-            System.out.printf("%s. %s%n", i,  monster.getName());
+            System.out.printf("%s. %s \tHP: %s%n", i,  monster.getName(), monster.getStats().getHealthPoint());
         }
     }
 
-    public void printNamaPassiveMonster(){
-        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
-        System.out.printf("%s's Monsters%n", getPlayerName());
-        System.out.printf("Nama monster :%n");
+    public void printInfoActiveMonster(){
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        if (activeMonster != null) {
+            System.out.println("Monster yang sedang digunakan oleh Player " + getPlayerName());
+            System.out.println(activeMonster.getName() + ". HP: " + activeMonster.getStats().getHealthPoint());
+        }
+        else {
+            System.out.println("Tidak ada monster aktif yang digunakan oleh Player " + getPlayerName());
+        }
+    }
+
+    public void printInfoPassiveMonster(){
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.printf("Daftar Monster yang tidak digunakan oleh Player %s%n", getPlayerName());
         int i = 0;
         for(Monster monster : passiveMonsters){
             i++;
@@ -79,9 +90,8 @@ public class Player {
     }
     
     public void chooseMonster(){
-        this.passiveMonsters.addAll(monsters);
         System.out.println("CHOOSE YOUR MONSTER");
-        printNamaMonster();
+        printInfoMonster();
         Scanner scanChoose = new Scanner(System.in);
         System.out.printf("SELECT MONSTER TO FIGHT: ");
         int inputChoose = scanChoose.nextInt();
@@ -102,7 +112,7 @@ public class Player {
 
     public void switchMonster() {
         System.out.println("SWITCH MONSTER");
-        printNamaPassiveMonster();
+        printInfoPassiveMonster();
         boolean isInputValid = true;
         while (isInputValid) {
             if (this.passiveMonsters.size() > 0) {
@@ -114,7 +124,7 @@ public class Player {
                     activeMonster = this.passiveMonsters.get(inputSwitch-1);
                     this.passiveMonsters.remove(inputSwitch-1);
                     System.out.println("Kamu memilih "+ activeMonster.getName());
-                    printNamaPassiveMonster();
+                    printInfoPassiveMonster();
                     isInputValid = false;
                 }
                 else {
