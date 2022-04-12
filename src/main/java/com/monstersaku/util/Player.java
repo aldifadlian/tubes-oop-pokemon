@@ -82,30 +82,48 @@ public class Player {
         }
     }
 
-    public static int move() {
+    public int move() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Select move: ");
-        int input = scanner.nextInt();
-        return input;
+        this.activeMonster.printInfoMove();
+        boolean isValid = true;
+        int inputMove = 0;
+        while (isValid) {
+            try {
+                Scanner scanMove = new Scanner(System.in);
+                System.out.printf("Select move : ");
+                inputMove = scanMove.nextInt();
+                if (inputMove >= 1 && inputMove <= this.activeMonster.getMoves().size()) {
+                    isValid = false;
+                } else {
+                    throw new IllegalArgumentException();
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("Input salah. Harap ulangi dengan pilihan yang tersedia!");
+            } 
+        }
+        return inputMove;
     }
     
     public void chooseMonster(){
         System.out.println("CHOOSE YOUR MONSTER");
         printInfoMonster();
         Scanner scanChoose = new Scanner(System.in);
-        System.out.printf("SELECT MONSTER TO FIGHT: ");
-        int inputChoose = scanChoose.nextInt();
-        boolean isInputValid = true;
-        while (isInputValid) {
-            if (inputChoose >= 1 && inputChoose <= this.passiveMonsters.size()){
-                activeMonster = this.monsters.get(inputChoose-1);
-                this.passiveMonsters.remove(inputChoose-1);
-                System.out.println("Kamu memilih "+ activeMonster.getName());
-                isInputValid = false;
-            }
-            else {
-                System.out.println("Input salah, silakan ulangi untuk monster yang tersedia!");
-                isInputValid = false;
+        boolean isValid = true;
+        while (isValid) {
+            try {
+                System.out.printf("SELECT MONSTER TO FIGHT: ");
+                int inputChoose = scanChoose.nextInt();
+                if (inputChoose >= 1 && inputChoose <= this.passiveMonsters.size()){
+                    activeMonster = this.monsters.get(inputChoose-1);
+                    this.passiveMonsters.remove(inputChoose-1);
+                    System.out.println("Kamu memilih "+ activeMonster.getName());
+                    isValid = false;
+                }
+                else {
+                    throw new IllegalArgumentException();
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("Input salah. Harap ulangi dengan pilihan yang tersedia!");
             }
         }
     }
@@ -116,19 +134,23 @@ public class Player {
         boolean isInputValid = true;
         while (isInputValid) {
             if (this.passiveMonsters.size() > 0) {
-                Scanner scanSwitch = new Scanner(System.in);
-                System.out.printf("SELECT MONSTER TO SWITCH: ");
-                int inputSwitch = scanSwitch.nextInt();
-                if (inputSwitch >= 1 && inputSwitch <= this.passiveMonsters.size()){
-                    this.passiveMonsters.add(activeMonster);
-                    activeMonster = this.passiveMonsters.get(inputSwitch-1);
-                    this.passiveMonsters.remove(inputSwitch-1);
-                    System.out.println("Kamu memilih "+ activeMonster.getName());
-                    printInfoPassiveMonster();
-                    isInputValid = false;
-                }
-                else {
-                    System.out.println("Input salah, silakan ulangi untuk monster yang tersedia!");
+                try {
+                    Scanner scanSwitch = new Scanner(System.in);
+                    System.out.printf("SELECT MONSTER TO SWITCH: ");
+                    int inputSwitch = scanSwitch.nextInt();
+                    if (inputSwitch >= 1 && inputSwitch <= this.passiveMonsters.size()){
+                        this.passiveMonsters.add(activeMonster);
+                        activeMonster = this.passiveMonsters.get(inputSwitch-1);
+                        this.passiveMonsters.remove(inputSwitch-1);
+                        System.out.println("Kamu memilih "+ activeMonster.getName());
+                        printInfoPassiveMonster();
+                        isInputValid = false;
+                    }
+                    else {
+                        throw new IllegalArgumentException();
+                    }
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Input salah. Harap ulangi dengan pilihan yang tersedia!");
                 }
             }
             else {

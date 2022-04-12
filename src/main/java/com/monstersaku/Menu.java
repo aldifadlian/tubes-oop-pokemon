@@ -68,7 +68,7 @@ public class Menu {
             System.out.printf("Select : ");
             String action = scanAction.nextLine();
             if (action.equals("MOVE")) {
-                act = 1;
+                act = playerPlay.move();
                 isValid = false;
             }
             else if (action.equals("SWITCH")) {

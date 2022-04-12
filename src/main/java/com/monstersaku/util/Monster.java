@@ -60,4 +60,14 @@ public class Monster {
     public void setStatusCondition(StatusCondition statusCondition){
         this.statusCondition = statusCondition;
     }
+
+    public void printInfoMove(){
+        System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        System.out.printf("Daftar move pada monster %s%n", getName());
+        int i = 0;
+        for(Move move : IDmoves){
+            i++;
+            System.out.println(i+". "+ move.getMoveName()+" Accurancy: "+move.getAccuracy()+" Ammunition: "+move.getAmmunition()+" Priority: "+move.getPriority());
+        }
+    }
 }

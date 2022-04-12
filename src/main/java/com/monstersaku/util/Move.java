@@ -49,11 +49,11 @@ public abstract class Move{
     }
 
     //getter 
-    public int getId() {
+    public int getMoveId() {
         return this.id;
     }
 
-    public String getName() {
+    public String getMoveName() {
         return this.name;
     }
 
