@@ -116,7 +116,6 @@ public class Main {
                 System.out.printf("%nPemain 2 : %s%n", namaPemain2);
                 Random acak = new Random();
                 Integer batasMonster = listMonster.size();
-                System.out.printf("%s\n",batasMonster);
                 ArrayList<Monster> listMonsPemain1 = new ArrayList<Monster>();
                 for(int i = 0; i < 6; i++){
                     Integer acakMonster = acak.nextInt(batasMonster);
