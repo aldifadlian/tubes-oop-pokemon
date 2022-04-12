@@ -6,6 +6,7 @@ public class StatusCondition extends Stats {
     private boolean isPoison=false;
     private boolean isSleep=false;
     private boolean isParalyze=false;
+    private int masihSleep;
 
     //konstruktor
     public StatusCondition(double hP, double att, double def, double spAtt, double spDeff, double spd){
@@ -15,6 +16,28 @@ public class StatusCondition extends Stats {
         this.isSleep=false;
         this.isParalyze=false;
     }
+    //setter
+    public void setBurn(boolean isBurn) {
+        this.isBurn = isBurn;
+    }
+
+	public void setPoison(boolean isPoison) {
+        this.isPoison = isPoison;
+    }
+
+	public void setSleep(boolean isSleep) {
+        this.isSleep = isSleep;
+    }
+
+	public void setParalyze(boolean isParalyze) {
+        this.isParalyze = isParalyze;
+    }
+
+	public void setMasihSleep(int masihSleep){
+		this.masihSleep = masihSleep;
+	}
+
+
     //getter
     public boolean getBurn(){
         return this.isBurn;
@@ -28,33 +51,16 @@ public class StatusCondition extends Stats {
     public boolean getParalyze(){
         return this.isParalyze;
     }
-    public void ChangeToBurn(){
-        if (this.isBurn == false && this.isPoison == false &&  this.isSleep == false && this.isParalyze==false){
-            this.isBurn=true; 
-        }//else do nothing
-        
-    }
-    public void ChangeToPoison(){
-        if (this.isBurn == false && this.isPoison == false &&  this.isSleep == false && this.isParalyze==false){
-            this.isPoison=true;
-        }//else do nothing
-    }
-    public void ChangeToSleep(){
-        if (this.isBurn == false && this.isPoison == false &&  this.isSleep == false && this.isParalyze==false){
-            this.isSleep=true;
-        }//else do nothing
-    }
-    public void ChangeToParalyze(){
-        if (this.isBurn == false && this.isPoison == false &&  this.isSleep == false && this.isParalyze==false){
-            this.isParalyze=true;
-        }//else do nothing
-    }
+    public int getMasihSleep(){
+		return this.masihSleep;
+	}
+
     public double kenaBurn(){
-        return (1/8 * super.getHealthPoint());
+        return (1/8 * super.getMaxHP());
     }
 
     public double kenaPoison(){
-        return (1/16 * super.getHealthPoint());
+        return (1/16 * super.getMaxHP());
     }
 
     public double kenaParalyze(){

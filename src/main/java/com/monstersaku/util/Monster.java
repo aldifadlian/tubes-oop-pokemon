@@ -18,7 +18,6 @@ public class Monster {
         this.elemenTypes = elemenTypes;
         this.baseStats = baseStats;
         this.IDmoves = IDmoves;
-        this.statusCondition = null;
     }
 
     //Getter
@@ -56,9 +55,6 @@ public class Monster {
     }
     public void setMoves(List<Move> IDmoves){
         this.IDmoves = IDmoves;
-    }
-    public void setStatusCondition(StatusCondition statusCondition){
-        this.statusCondition = statusCondition;
     }
 
     public void printInfoMove(){
