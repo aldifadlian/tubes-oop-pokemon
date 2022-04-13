@@ -60,11 +60,11 @@ public class StatusMove extends Move{
                         int max = 4;
                         int random = ThreadLocalRandom.current().nextInt(min,max+1);
                         if (random == 1){
-                            //nanti yak
                             System.out.printf("%s tidak dapat bergerak selama 1 giliran.%n", monsEnemy.getName());
                         }
                         else {
-                            //bingung ges
+                            System.out.printf("%s masih bisa gerak, tapi speednya turun nih.%n", monsEnemy.getName());
+                            System.out.printf("Speed %s sekarang sebesar %f.%n", monsEnemy.getName(),(monsEnemy.getStats().getSpeed() * 0.5));
                         }
                     }
                 }
@@ -78,5 +78,6 @@ public class StatusMove extends Move{
             monsOwn.getStats().setHealthPoint(finalHp);
             System.out.println("Melakukan HEAL, HP bertambah");
         }
+        super.setAmmunition(super.getAmmunition()-1);
     }
 }

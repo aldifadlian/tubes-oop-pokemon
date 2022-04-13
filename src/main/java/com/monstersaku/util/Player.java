@@ -54,6 +54,7 @@ public class Player {
     public void printInfoMonster(){
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.printf("Daftar Monster Player %s%n", getPlayerName());
+        //afterDie();
         int i = 0;
         for(Monster monster : monsters){
             i++;
@@ -93,17 +94,40 @@ public class Player {
                 System.out.printf("Select move : ");
                 inputMove = scanMove.nextInt();
                 if (inputMove >= 1 && inputMove <= this.activeMonster.getMoves().size()) {
+                    System.out.printf("%s melakukan %s%n",activeMonster.getName(), activeMonster.getMoves().get(inputMove-1).getMoveName());
                     isValid = false;
                 } else {
                     throw new IllegalArgumentException();
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println("Input salah. Harap ulangi dengan pilihan yang tersedia!");
-            } 
+            } catch (Exception e){
+                System.out.println("Input salah. Harap ulangi dengan tipe masukan yang sesuai!");
+            }
         }
         return inputMove;
     }
-    
+
+    public boolean isMonsterDie() {
+        return (activeMonster.getStats().getHealthPoint() == 0);
+    }
+
+    public void afterDie() {
+        int i = 0;
+        for (Monster monster : monsters){
+            i++;
+            if (isMonsterDie()){
+                this.monsters.remove(i);
+            }
+        }
+    }
+
+    public void initialMonster(){
+        activeMonster = this.monsters.get(0);
+        System.out.println("Monster yang terpilih untuk bertarung adalah "+ activeMonster.getName());
+        this.passiveMonsters.remove(0);
+    }
+
     public void chooseMonster(){
         System.out.println("CHOOSE YOUR MONSTER");
         printInfoMonster();
@@ -124,6 +148,8 @@ public class Player {
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println("Input salah. Harap ulangi dengan pilihan yang tersedia!");
+            } catch (Exception e){
+                System.out.println("Input salah. Harap ulangi dengan tipe masukan yang sesuai!");
             }
         }
     }
@@ -143,7 +169,6 @@ public class Player {
                         activeMonster = this.passiveMonsters.get(inputSwitch-1);
                         this.passiveMonsters.remove(inputSwitch-1);
                         System.out.println("Kamu memilih "+ activeMonster.getName());
-                        printInfoPassiveMonster();
                         isInputValid = false;
                     }
                     else {
@@ -151,6 +176,8 @@ public class Player {
                     }
                 } catch (IllegalArgumentException e) {
                     System.out.println("Input salah. Harap ulangi dengan pilihan yang tersedia!");
+                }catch (Exception e){
+                    System.out.println("Input salah. Harap ulangi dengan tipe masukan yang sesuai!");
                 }
             }
             else {
@@ -189,4 +216,5 @@ public class Player {
             monster.getStats().printBaseStats();
         }
     }
+
 }

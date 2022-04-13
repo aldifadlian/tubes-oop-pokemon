@@ -24,5 +24,6 @@ public class NormalMove extends Move {
         if (monsEnemy.getStats().getHealthPoint() < 0.0) {
             monsEnemy.getStats().setHealthPoint(0.0);
         }
+        super.setAmmunition(super.getAmmunition()-1);
     }
 }

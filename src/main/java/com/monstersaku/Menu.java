@@ -1,6 +1,7 @@
 package com.monstersaku;
 import com.monstersaku.util.*;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Menu {
     public static void start() {
@@ -81,11 +82,15 @@ public class Menu {
                 isValid = false;
             }
             else if (action.equals("VIEW GAME INFO")) {
-                System.out.println("Info player " + playerPlay.getPlayerName());
+                System.out.println("");
+                System.out.println("===== INFO TURN ====");
+                System.out.println(playerPlay.getPlayerName() + " sedang dalam turn");
+                System.out.println("");
+                System.out.println("===== Info Player " + playerPlay.getPlayerName() +" =====");
                 playerPlay.printInfoActiveMonster();
                 playerPlay.printInfoPassiveMonster();
-                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-                System.out.println("Info player " + playerOpponent.getPlayerName());
+                System.out.println("");
+                System.out.println("===== Info Player " + playerOpponent.getPlayerName()+" =====");
                 playerOpponent.printInfoActiveMonster();
                 playerOpponent.printInfoPassiveMonster();
                 isValid = false;
@@ -97,4 +102,72 @@ public class Menu {
         return act;
     }
 
+    /*
+    public static void urutanMove(Player playerPlay, Player playerOpponent){
+        int indexPlay = playerPlay.move();
+        int indexOpp = playerOpponent.move();
+        int prioPlay = playerPlay.getActiveMonster().getMoves().get(indexPlay-1).getPriority();
+        int prioOpp = playerOpponent.getActiveMonster().getMoves().get(indexOpp-1).getPriority();
+        System.out.println("xxxxxxxxxx");
+        if (prioPlay > prioOpp) {
+            System.out.println("TESSSSSSSSSSSSS");
+            System.out.println("Player "+playerPlay.getPlayerName()+"move duluan");
+            //System.out.printf("%s melakukan %s%n",playerPlay.getActiveMonster().getName(), playerPlay.getActiveMonster().getMoves().get(playerPlay.move()).getMoveName());
+            playerPlay.getActiveMonster().getMoves().get(playerPlay.move()).damage(playerPlay.getActiveMonster(), playerOpponent.getActiveMonster());
+            System.out.printf("HP %s sekarang : %s%n",playerPlay.getActiveMonster().getName(),playerPlay.getActiveMonster().getStats().getHealthPoint());
+            System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
+            if (playerOpponent.isMonsterDie()){
+                System.out.printf("astaga %s sudah meninggal",playerOpponent.getActiveMonster().getName());
+                if (playerOpponent.getPlayerMonster() != null){
+                    playerOpponent.chooseMonster();
+                }
+                else {
+                    System.out.printf("%S MENANG HOREEE", playerPlay.getPlayerName());
+                    exit();
+                }
+            }
+            else{
+                System.out.println("Player "+playerOpponent.getPlayerName()+"move selanjutnya");
+                //System.out.printf("%s melakukan %s%n",playerOpponent.getActiveMonster().getName(), playerOpponent.getActiveMonster().getMoves().get(playerOpponent.move()).getMoveName());
+                playerOpponent.getActiveMonster().getMoves().get(playerOpponent.move()).damage(playerOpponent.getActiveMonster(), playerPlay.getActiveMonster());
+                System.out.printf("HP %s sekarang : %s%n",playerPlay.getActiveMonster().getName(),playerPlay.getActiveMonster().getStats().getHealthPoint());
+                System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
+                if (playerPlay.isMonsterDie()){
+                    System.out.printf("astaga %s sudah meninggal",playerOpponent.getActiveMonster().getName());
+                    if (playerPlay.getPlayerMonster() != null){
+                        playerPlay.chooseMonster();
+                    }
+                    else {
+                        System.out.printf("%S MENANG HOREEE", playerOpponent.getPlayerName());
+                        exit();
+                    }
+                }
+            }
+        } 
+        else if (playerPlay.getActiveMonster().getMoves().get(playerPlay.move()).getPriority() < playerOpponent.getActiveMonster().getMoves().get(playerOpponent.move()).getPriority()) {
+            System.out.println("Player "+playerOpponent.getPlayerName()+"move duluan");
+        } 
+        else {
+            System.out.println("Priority pemain sama. Urutan ditentukan pada speed");
+            if (playerPlay.getActiveMonster().getStats().getSpeed() > playerOpponent.getActiveMonster().getStats().getSpeed()) {
+                System.out.println("Player "+playerPlay.getPlayerName()+"move duluan");
+
+            } 
+            else if (playerPlay.getActiveMonster().getStats().getSpeed() < playerOpponent.getActiveMonster().getStats().getSpeed()) {
+                System.out.println("Player "+playerOpponent.getPlayerName()+"move duluan");
+
+            }
+            else {
+                System.out.println("Speed pemain sama. Urutan dipilih random");
+                Random random = new Random();
+                int urutan = random.nextInt(2) + 1;
+                if (urutan == 1) {
+
+                }
+                else {
+
+                }
+            }
+        } 
+    } */
 }

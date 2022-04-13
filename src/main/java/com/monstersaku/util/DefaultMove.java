@@ -26,6 +26,6 @@ public class DefaultMove extends Move {
         }
 
         monsOwn.getStats().setHealthPoint(monsOwn.getStats().getHealthPoint() - (monsOwn.getStats().getMaxHP())/4);
-
+        super.setAmmunition(super.getAmmunition()-1);
     }
 }
