@@ -2,10 +2,10 @@ package com.monstersaku.util;
 
 public class StatusCondition extends Stats {
     //atribut
-    private boolean isBurn=false;
-    private boolean isPoison=false;
-    private boolean isSleep=false;
-    private boolean isParalyze=false;
+    private boolean isBurn;
+    private boolean isPoison;
+    private boolean isSleep;
+    private boolean isParalyze;
     private int masihSleep;
 
     //konstruktor

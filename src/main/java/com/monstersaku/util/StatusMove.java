@@ -30,47 +30,45 @@ public class StatusMove extends Move{
 
     public void damage(Monster monsOwn, Monster monsEnemy){
         if (super.getTarget().equals("ENEMY")){
-            if (this.getAttType().equals("Burn")){
-                double finalHp = monsEnemy.getStats().getMaxHP() - effectMove;
-                monsEnemy.getStats().setHealthPoint(finalHp);
-                if (monsEnemy.getStatusCondition().getBurn() && monsEnemy.getStatusCondition().getPoison() && monsEnemy.getStatusCondition().getSleep() && monsEnemy.getStatusCondition().getParalyze()){
-                    if (attType.equals("BURN")){
-                        monsEnemy.getStatusCondition().setBurn(true);
-                        monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getHealthPoint()-monsEnemy.getStatusCondition().kenaBurn());
-                        System.out.printf("%s kena efek BURN nih, HP berkurang 1/8.%n", monsEnemy.getName());
+            double finalHp = monsEnemy.getStats().getMaxHP() - effectMove;
+            monsEnemy.getStats().setHealthPoint(finalHp);
+            if (!monsEnemy.getStatusCondition().getBurn() && !monsEnemy.getStatusCondition().getPoison() && !monsEnemy.getStatusCondition().getSleep() && !monsEnemy.getStatusCondition().getParalyze()){
+                if (attType.equals("BURN")){
+                    monsEnemy.getStatusCondition().setBurn(true);
+                    monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getHealthPoint()-monsEnemy.getStatusCondition().kenaBurn());
+                    System.out.printf("%s kena efek BURN nih, HP berkurang 1/8.%n", monsEnemy.getName());
+                }
+                else if (attType.equals("POISON")){
+                    monsEnemy.getStatusCondition().setPoison(true);
+                    monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getHealthPoint()-monsEnemy.getStatusCondition().kenaPoison());
+                    System.out.printf("%s kena efek POISON nih, HP berkurang 1/16.%n", monsEnemy.getName());
+                }
+                else if (attType.equals("SLEEP")){
+                    monsEnemy.getStatusCondition().setSleep(true);
+                    int min = 1;
+                    int max = 7;
+                    int random = ThreadLocalRandom.current().nextInt(min,max+1);
+                    monsEnemy.getStatusCondition().setMasihSleep(random);
+                    System.out.printf("%s kena efek SLEEP nih, monster tertidur selama %s ronde.%n", monsEnemy.getName(),monsEnemy.getStatusCondition().getMasihSleep());
+                }
+                else if (attType.equals("PARALYZE")){
+                    monsEnemy.getStatusCondition().setParalyze(true);
+                    monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getSpeed()-monsEnemy.getStatusCondition().kenaParalyze());
+                    System.out.printf("%s kena efek PARALYZE nih, speed berkurang 1/2.%n", monsEnemy.getName(),monsEnemy.getStatusCondition().getMasihSleep());
+                    int min = 1;
+                    int max = 4;
+                    int random = ThreadLocalRandom.current().nextInt(min,max+1);
+                    if (random == 1){
+                        System.out.printf("%s tidak dapat bergerak selama 1 giliran.%n", monsEnemy.getName());
                     }
-                    else if (attType.equals("POISON")){
-                        monsEnemy.getStatusCondition().setPoison(true);
-                        monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getHealthPoint()-monsEnemy.getStatusCondition().kenaPoison());
-                        System.out.printf("%s kena efek POISON nih, HP berkurang 1/16.%n", monsEnemy.getName());
-                    }
-                    else if (attType.equals("SLEEP")){
-                        monsEnemy.getStatusCondition().setSleep(true);
-                        int min = 1;
-                        int max = 7;
-                        int random = ThreadLocalRandom.current().nextInt(min,max+1);
-                        monsEnemy.getStatusCondition().setMasihSleep(random);
-                        System.out.printf("%s kena efek SLEEP nih, monster tertidur selama %s ronde.%n", monsEnemy.getName(),monsEnemy.getStatusCondition().getMasihSleep());
-                    }
-                    else if (attType.equals("PARALYZE")){
-                        monsEnemy.getStatusCondition().setParalyze(true);
-                        monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getSpeed()-monsEnemy.getStatusCondition().kenaParalyze());
-                        System.out.printf("%s kena efek PARALYZE nih, speed berkurang 1/2.%n", monsEnemy.getName(),monsEnemy.getStatusCondition().getMasihSleep());
-                        int min = 1;
-                        int max = 4;
-                        int random = ThreadLocalRandom.current().nextInt(min,max+1);
-                        if (random == 1){
-                            System.out.printf("%s tidak dapat bergerak selama 1 giliran.%n", monsEnemy.getName());
-                        }
-                        else {
-                            System.out.printf("%s masih bisa gerak, tapi speednya turun nih.%n", monsEnemy.getName());
-                            System.out.printf("Speed %s sekarang sebesar %f.%n", monsEnemy.getName(),(monsEnemy.getStats().getSpeed() * 0.5));
-                        }
+                    else {
+                        System.out.printf("%s masih bisa gerak, tapi speednya turun nih.%n", monsEnemy.getName());
+                        System.out.printf("Speed %s sekarang sebesar %f.%n", monsEnemy.getName(),(monsEnemy.getStats().getSpeed() * 0.5));
                     }
                 }
-                else {
-                    System.out.printf("%s sudah mendapatkan efek lain.%n", monsEnemy.getName());
-                }
+            }
+            else {
+                System.out.printf("%s sudah mendapatkan efek lain.%n", monsEnemy.getName());
             }
         }
         else if(super.getTarget().equals("OWN")){
