@@ -54,7 +54,6 @@ public class Player {
     public void printInfoMonster(){
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         System.out.printf("Daftar Monster Player %s%n", getPlayerName());
-        //afterDie();
         int i = 0;
         for(Monster monster : monsters){
             i++;
@@ -108,18 +107,20 @@ public class Player {
         return inputMove;
     }
 
-    public boolean isMonsterDie() {
+     public boolean isMonsterDie() {
         return (activeMonster.getStats().getHealthPoint() == 0);
     }
 
-    public void afterDie() {
+     public void afterDie() {
         int i = 0;
-        for (Monster monster : monsters){
+        int x = 0;
+        for(Monster monster : monsters){
             i++;
-            if (isMonsterDie()){
-                this.monsters.remove(i);
+            if (monster.getStats().getHealthPoint() == 0){
+                x = i;
             }
         }
+        this.monsters.remove(x-1);
     }
 
     public void initialMonster(){
@@ -130,6 +131,7 @@ public class Player {
 
     public void chooseMonster(){
         System.out.println("CHOOSE YOUR MONSTER");
+        afterDie();
         printInfoMonster();
         Scanner scanChoose = new Scanner(System.in);
         boolean isValid = true;

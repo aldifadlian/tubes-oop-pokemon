@@ -241,6 +241,8 @@ public class Main {
                         if (playerOpponent.isMonsterDie()){
                             System.out.printf("astaga %s sudah meninggal%n",playerOpponent.getActiveMonster().getName());
                             if (playerOpponent.getPlayerMonster() != null){
+                                System.out.println("");
+                                System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                 playerOpponent.chooseMonster();
                             }
                             else {
@@ -257,6 +259,8 @@ public class Main {
                             if (playerPlay.isMonsterDie()){
                                 System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
                                 if (playerPlay.getPlayerMonster() != null){
+                                    System.out.println("");
+                                    System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                     playerPlay.chooseMonster();
                                 }
                                 else {
@@ -275,6 +279,8 @@ public class Main {
                         if (playerPlay.isMonsterDie()){
                             System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
                             if (playerPlay.getPlayerMonster() != null){
+                                System.out.println("");
+                                System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                 playerPlay.chooseMonster();
                             }
                             else {
@@ -291,6 +297,8 @@ public class Main {
                             if (playerOpponent.isMonsterDie()){
                                 System.out.printf("astaga %s sudah meninggal%n",playerOpponent.getActiveMonster().getName());
                                 if (playerOpponent.getPlayerMonster() != null){
+                                    System.out.println("");
+                                    System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                     playerOpponent.chooseMonster();
                                 }
                                 else {
@@ -311,6 +319,8 @@ public class Main {
                             if (playerOpponent.isMonsterDie()){
                                 System.out.printf("astaga %s sudah meninggal%n",playerOpponent.getActiveMonster().getName());
                                 if (playerOpponent.getPlayerMonster() != null){
+                                    System.out.println("");
+                                    System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                     playerOpponent.chooseMonster();
                                 }
                                 else {
@@ -327,6 +337,8 @@ public class Main {
                                 if (playerPlay.isMonsterDie()){
                                     System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
                                     if (playerPlay.getPlayerMonster() != null){
+                                        System.out.println("");
+                                        System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                         playerPlay.chooseMonster();
                                     }
                                     else {
@@ -345,6 +357,8 @@ public class Main {
                             if (playerPlay.isMonsterDie()){
                                 System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
                                 if (playerPlay.getPlayerMonster() != null){
+                                    System.out.println("");
+                                    System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                     playerPlay.chooseMonster();
                                 }
                                 else {
@@ -361,6 +375,8 @@ public class Main {
                                 if (playerOpponent.isMonsterDie()){
                                     System.out.printf("astaga %s sudah meninggal%n",playerOpponent.getActiveMonster().getName());
                                     if (playerOpponent.getPlayerMonster() != null){
+                                        System.out.println("");
+                                        System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                         playerOpponent.chooseMonster();
                                     }
                                     else {
@@ -383,6 +399,8 @@ public class Main {
                                 if (playerOpponent.isMonsterDie()){
                                     System.out.printf("astaga %s sudah meninggal%n",playerOpponent.getActiveMonster().getName());
                                     if (playerOpponent.getPlayerMonster() != null){
+                                        System.out.println("");
+                                        System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                         playerOpponent.chooseMonster();
                                     }
                                     else {
@@ -399,6 +417,8 @@ public class Main {
                                     if (playerPlay.isMonsterDie()){
                                         System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
                                         if (playerPlay.getPlayerMonster() != null){
+                                            System.out.println("");
+                                            System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                             playerPlay.chooseMonster();
                                         }
                                         else {
@@ -417,6 +437,8 @@ public class Main {
                                 if (playerPlay.isMonsterDie()){
                                     System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
                                     if (playerPlay.getPlayerMonster() != null){
+                                        System.out.println("");
+                                        System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                         playerPlay.chooseMonster();
                                     }
                                     else {
@@ -433,6 +455,8 @@ public class Main {
                                     if (playerOpponent.isMonsterDie()){
                                         System.out.printf("astaga %s sudah meninggal%n%n",playerOpponent.getActiveMonster().getName());
                                         if (playerOpponent.getPlayerMonster() != null){
+                                            System.out.println("");
+                                            System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                             playerOpponent.chooseMonster();
                                         }
                                         else {
