@@ -1,6 +1,8 @@
 package com.monstersaku.util;
+import java.util.List;
+import java.util.ArrayList;
 
-public class StatusCondition extends Stats {
+public class StatusCondition extends Monster {
     //atribut
     private boolean isBurn;
     private boolean isPoison;
@@ -9,8 +11,8 @@ public class StatusCondition extends Stats {
     private int masihSleep;
 
     //konstruktor
-    public StatusCondition(double hP, double att, double def, double spAtt, double spDeff, double spd){
-        super(hP, att, def, spAtt, spDeff, spd);
+    public StatusCondition(int id, String nama, List<ElementType> elemenTypes, Stats baseStats, List<Move> IDmoves){
+        super(id,nama,elemenTypes,baseStats,IDmoves);
         this.isBurn=false;
         this.isPoison=false;
         this.isSleep=false;
@@ -54,16 +56,4 @@ public class StatusCondition extends Stats {
     public int getMasihSleep(){
 		return this.masihSleep;
 	}
-
-    public double kenaBurn(){
-        return (1/8 * super.getMaxHP());
-    }
-
-    public double kenaPoison(){
-        return (1/16 * super.getMaxHP());
-    }
-
-    public double kenaParalyze(){
-        return (1/2 * super.getSpeed());
-    }
 }

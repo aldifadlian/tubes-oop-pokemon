@@ -35,12 +35,12 @@ public class StatusMove extends Move{
             if (!monsEnemy.getStatusCondition().getBurn() && !monsEnemy.getStatusCondition().getPoison() && !monsEnemy.getStatusCondition().getSleep() && !monsEnemy.getStatusCondition().getParalyze()){
                 if (attType.equals("BURN")){
                     monsEnemy.getStatusCondition().setBurn(true);
-                    monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getHealthPoint()-monsEnemy.getStatusCondition().kenaBurn());
+                    monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getHealthPoint()-(monsEnemy.getStats().getMaxHP()/8));
                     System.out.printf("%s kena efek BURN nih, HP berkurang 1/8.%n", monsEnemy.getName());
                 }
                 else if (attType.equals("POISON")){
                     monsEnemy.getStatusCondition().setPoison(true);
-                    monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getHealthPoint()-monsEnemy.getStatusCondition().kenaPoison());
+                    monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getHealthPoint()-(monsEnemy.getStats().getMaxHP()/16));
                     System.out.printf("%s kena efek POISON nih, HP berkurang 1/16.%n", monsEnemy.getName());
                 }
                 else if (attType.equals("SLEEP")){
@@ -53,7 +53,7 @@ public class StatusMove extends Move{
                 }
                 else if (attType.equals("PARALYZE")){
                     monsEnemy.getStatusCondition().setParalyze(true);
-                    monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getSpeed()-monsEnemy.getStatusCondition().kenaParalyze());
+                    monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getSpeed()-(monsEnemy.getStats().getSpeed()/2));
                     System.out.printf("%s kena efek PARALYZE nih, speed berkurang 1/2.%n", monsEnemy.getName(),monsEnemy.getStatusCondition().getMasihSleep());
                     int min = 1;
                     int max = 4;
