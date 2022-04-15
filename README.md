@@ -1,4 +1,5 @@
 # tubes-oop-pokemon
+## MONSTER SAKU
 Monster Saku merupakan permainan PvP (Player vs Player) berbasis CLI (Command Line Interface) yang dimainkan oleh 2 orang pemain yang akan saling bertarung. Permainan ini mengimplementesikan simulasi pertarungan antar monster saku. Masing-masing pemain akan memiliki kombinasi 6 monster yang dipilih secara acak oleh sistem dalam setiap permainan.
 
 ### Ketentuan permainan adalah sebagai berikut.
@@ -9,3 +10,11 @@ Monster Saku merupakan permainan PvP (Player vs Player) berbasis CLI (Command Li
 5. Pada setiap giliran, pemain boleh melakukan MOVE(bertarung) atau SWITCH(menukar monster). Jenis move yang tersedia ada 4, yaitu : Normal, Special, Default, dan Status.
 6. Pada saat bertarung, monster akan berada dalam kondisi status tertentu. Terdapat 4 jenis status, yaitu : BURN, POISON, SLEEP, PARALYZE.
 7. Permainan selesai ketika salah satu pemain tidak memiliki monster untuk dipertarungkan dan pemain tersebut dinyatakan kalah.
+
+#
+### DIBUAT OLEH
+#### KELOMPOK 26
+##### 18220040 AKMAL MUNGGARAN
+##### 18220056 KHAFIFANISA
+##### 18220086 ALDI FADLIAN SUNAN
+##### 18220094 SITI ADIRA RAMADHANI
