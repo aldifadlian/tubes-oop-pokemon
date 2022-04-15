@@ -25,6 +25,9 @@ public class DefaultMove extends Move {
         if (monsEnemy.getStats().getHealthPoint() < 0.0) {
             monsEnemy.getStats().setHealthPoint(0.0);
         }
+        if (monsOwn.getStats().getHealthPoint() < 0.0) {
+            monsOwn.getStats().setHealthPoint(0.0);
+        }
         super.setAmmunition(super.getAmmunition()-1);
 
         System.out.printf("Damage yang diberikan oleh %s sebesar %s.%n",monsOwn.getName(),finalDamage);

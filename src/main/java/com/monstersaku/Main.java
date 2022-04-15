@@ -173,7 +173,7 @@ public class Main {
                     System.out.println("Round "+idRound);
 
                     // bingung mau check tapi butuh acctivemonster bener ga?
-                    Monster playerPlayActiveMons = playerPlay.getActiveMonster();
+                   /* Monster playerPlayActiveMons = playerPlay.getActiveMonster();
                     Monster playerOppActiveMons = playerOpponent.getActiveMonster();
 
                     if (playerPlayActiveMons.getStatusCondition().getBurn()){
@@ -222,6 +222,7 @@ public class Main {
                             }
                         }
                     }
+                    */
 
                     boolean isRound = true;
                     int ctr = 1;
@@ -292,14 +293,16 @@ public class Main {
                         System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                         if (playerOpponent.isMonsterDie()){
                             System.out.printf("astaga %s sudah meninggal%n",playerOpponent.getActiveMonster().getName());
-                            if (playerOpponent.getPlayerMonster() != null){
+                            if (playerOpponent.getJumlahMons() != 0){
                                 System.out.println("");
                                 System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                 playerOpponent.chooseMonster();
                             }
                             else {
-                                System.out.printf("%S MENANG HOREEE", playerPlay.getPlayerName());
+                                System.out.println(playerPlay.getPlayerName() + " MENANG HOREEE");
                                 Menu.exit();
+                                isPlay = false;
+                                play = false;
                             }
                         }
                         else{
@@ -310,14 +313,16 @@ public class Main {
                             System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                             if (playerPlay.isMonsterDie()){
                                 System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
-                                if (playerPlay.getPlayerMonster() != null){
+                                if (playerPlay.getJumlahMons() != 0){
                                     System.out.println("");
                                     System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                     playerPlay.chooseMonster();
                                 }
                                 else {
-                                    System.out.printf("%S MENANG HOREEE", playerOpponent.getPlayerName());
+                                    System.out.println(playerOpponent.getPlayerName() + " MENANG HOREEE");
                                     Menu.exit();
+                                    isPlay = false;
+                                    play = false;
                                 }
                             }
                         }
@@ -330,14 +335,16 @@ public class Main {
                         System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                         if (playerPlay.isMonsterDie()){
                             System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
-                            if (playerPlay.getPlayerMonster() != null){
+                            if (playerPlay.getJumlahMons() != 0){
                                 System.out.println("");
                                 System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                 playerPlay.chooseMonster();
                             }
                             else {
-                                System.out.printf("%S MENANG HOREEE", playerOpponent.getPlayerName());
+                                System.out.println(playerOpponent.getPlayerName() + " MENANG HOREEE");
                                 Menu.exit();
+                                isPlay = false;
+                                play = false;
                             }
                         }
                         else{
@@ -348,14 +355,16 @@ public class Main {
                             System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                             if (playerOpponent.isMonsterDie()){
                                 System.out.printf("astaga %s sudah meninggal%n",playerOpponent.getActiveMonster().getName());
-                                if (playerOpponent.getPlayerMonster() != null){
+                                if (playerOpponent.getJumlahMons() != 0){
                                     System.out.println("");
                                     System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                     playerOpponent.chooseMonster();
                                 }
                                 else {
-                                    System.out.printf("%S MENANG HOREEE", playerPlay.getPlayerName());
+                                    System.out.println(playerPlay.getPlayerName() + " MENANG HOREEE");
                                     Menu.exit();
+                                    isPlay = false;
+                                    play = false;
                                 }
                             }
                         }
@@ -370,14 +379,16 @@ public class Main {
                             System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                             if (playerOpponent.isMonsterDie()){
                                 System.out.printf("astaga %s sudah meninggal%n",playerOpponent.getActiveMonster().getName());
-                                if (playerOpponent.getPlayerMonster() != null){
+                                if (playerOpponent.getJumlahMons() != 0){
                                     System.out.println("");
                                     System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                     playerOpponent.chooseMonster();
                                 }
                                 else {
-                                    System.out.printf("%S MENANG HOREEE", playerPlay.getPlayerName());
+                                    System.out.println(playerPlay.getPlayerName() + " MENANG HOREEE");
                                     Menu.exit();
+                                    isPlay = false;
+                                    play = false;
                                 }
                             }
                             else{
@@ -388,14 +399,16 @@ public class Main {
                                 System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                                 if (playerPlay.isMonsterDie()){
                                     System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
-                                    if (playerPlay.getPlayerMonster() != null){
+                                    if (playerPlay.getJumlahMons() != 0){
                                         System.out.println("");
                                         System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                         playerPlay.chooseMonster();
                                     }
                                     else {
-                                        System.out.printf("%S MENANG HOREEE", playerOpponent.getPlayerName());
+                                        System.out.println(playerOpponent.getPlayerName() + " MENANG HOREEE");
                                         Menu.exit();
+                                        isPlay = false;
+                                        play = false;
                                     }
                                 }
                             }
@@ -408,14 +421,16 @@ public class Main {
                             System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                             if (playerPlay.isMonsterDie()){
                                 System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
-                                if (playerPlay.getPlayerMonster() != null){
+                                if (playerPlay.getJumlahMons() != 0){
                                     System.out.println("");
                                     System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                     playerPlay.chooseMonster();
                                 }
                                 else {
-                                    System.out.printf("%S MENANG HOREEE", playerOpponent.getPlayerName());
+                                    System.out.println(playerOpponent.getPlayerName() + " MENANG HOREEE");
                                     Menu.exit();
+                                    isPlay = false;
+                                    play = false;
                                 }
                             }
                             else{
@@ -426,14 +441,16 @@ public class Main {
                                 System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                                 if (playerOpponent.isMonsterDie()){
                                     System.out.printf("astaga %s sudah meninggal%n",playerOpponent.getActiveMonster().getName());
-                                    if (playerOpponent.getPlayerMonster() != null){
+                                    if (playerOpponent.getJumlahMons() != 0){
                                         System.out.println("");
                                         System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                         playerOpponent.chooseMonster();
                                     }
                                     else {
-                                        System.out.printf("%S MENANG HOREEE", playerPlay.getPlayerName());
+                                        System.out.println(playerPlay.getPlayerName() + " MENANG HOREEE");
                                         Menu.exit();
+                                        isPlay = false;
+                                        play = false;
                                     }
                                 }
                             }
@@ -450,14 +467,16 @@ public class Main {
                                 System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                                 if (playerOpponent.isMonsterDie()){
                                     System.out.printf("astaga %s sudah meninggal%n",playerOpponent.getActiveMonster().getName());
-                                    if (playerOpponent.getPlayerMonster() != null){
+                                    if (playerOpponent.getJumlahMons() != 0){
                                         System.out.println("");
                                         System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                         playerOpponent.chooseMonster();
                                     }
                                     else {
-                                        System.out.printf("%S MENANG HOREEE", playerPlay.getPlayerName());
+                                        System.out.println(playerPlay.getPlayerName() + " MENANG HOREEE");
                                         Menu.exit();
+                                        isPlay = false;
+                                        play = false;
                                     }
                                 }
                                 else{
@@ -468,14 +487,16 @@ public class Main {
                                     System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                                     if (playerPlay.isMonsterDie()){
                                         System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
-                                        if (playerPlay.getPlayerMonster() != null){
+                                        if (playerPlay.getJumlahMons() != 0){
                                             System.out.println("");
                                             System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                             playerPlay.chooseMonster();
                                         }
                                         else {
-                                            System.out.printf("%S MENANG HOREEE", playerOpponent.getPlayerName());
+                                            System.out.println(playerOpponent.getPlayerName() + " MENANG HOREEE");
                                             Menu.exit();
+                                            isPlay = false;
+                                            play = false;
                                         }
                                     }
                                 }
@@ -488,14 +509,16 @@ public class Main {
                                 System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                                 if (playerPlay.isMonsterDie()){
                                     System.out.printf("astaga %s sudah meninggal%n",playerPlay.getActiveMonster().getName());
-                                    if (playerPlay.getPlayerMonster() != null){
+                                    if (playerPlay.getJumlahMons() != 0){
                                         System.out.println("");
                                         System.out.printf("%s's turn%n",playerPlay.getPlayerName());
                                         playerPlay.chooseMonster();
                                     }
                                     else {
-                                        System.out.printf("%S MENANG HOREEE", playerOpponent.getPlayerName());
+                                        System.out.println(playerOpponent.getPlayerName() + " MENANG HOREEE");
                                         Menu.exit();
+                                        isPlay = false;
+                                        play = false;
                                     }
                                 }
                                 else{
@@ -506,14 +529,16 @@ public class Main {
                                     System.out.printf("HP %s sekarang : %s%n",playerOpponent.getActiveMonster().getName(),playerOpponent.getActiveMonster().getStats().getHealthPoint());
                                     if (playerOpponent.isMonsterDie()){
                                         System.out.printf("astaga %s sudah meninggal%n%n",playerOpponent.getActiveMonster().getName());
-                                        if (playerOpponent.getPlayerMonster() != null){
+                                        if (playerOpponent.getJumlahMons() != 0){
                                             System.out.println("");
                                             System.out.printf("%s's turn%n",playerOpponent.getPlayerName());
                                             playerOpponent.chooseMonster();
                                         }
                                         else {
-                                            System.out.printf("%S MENANG HOREEE", playerPlay.getPlayerName());
+                                            System.out.println(playerPlay.getPlayerName() + " MENANG HOREEE");
                                             Menu.exit();
+                                            isPlay = false;
+                                            play = false;
                                         }
                                     }
                                 }

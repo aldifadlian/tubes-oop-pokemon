@@ -11,7 +11,7 @@ public class Player {
 
     public Player(String name, List<Monster> monsters) {
         this.name = name;
-        this.jumlahMons = 6;
+        this.jumlahMons = 5;
         this.monsters = monsters;
         this.passiveMonsters.addAll(monsters);
     }
@@ -116,8 +116,9 @@ public class Player {
         int x = 0;
         for(Monster monster : monsters){
             i++;
-            if (monster.getStats().getHealthPoint() == 0){
+            if (monster.getStats().getHealthPoint() <= 0){
                 x = i;
+                this.jumlahMons = this.jumlahMons - 1;
             }
         }
         this.monsters.remove(x-1);
