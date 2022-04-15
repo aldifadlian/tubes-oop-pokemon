@@ -121,7 +121,9 @@ public class Player {
                 this.jumlahMons = this.jumlahMons - 1;
             }
         }
-        this.monsters.remove(x-1);
+        if (x > 0){
+            this.monsters.remove(x-1);
+        }
     }
 
     public void initialMonster(){

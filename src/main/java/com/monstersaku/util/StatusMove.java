@@ -1,6 +1,7 @@
 package com.monstersaku.util;
 
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 public class StatusMove extends Move{
     private String attType; 
@@ -30,14 +31,12 @@ public class StatusMove extends Move{
 
     public void damage(Monster monsOwn, Monster monsEnemy){
         if (super.getTarget().equals("ENEMY")){
-            double finalHp = monsEnemy.getStats().getMaxHP() - effectMove;
+            double finalHp = monsEnemy.getStats().getHealthPoint() - effectMove;
             monsEnemy.getStats().setHealthPoint(finalHp);
             
             if (!monsEnemy.getStatusCondition().getBurn() && !monsEnemy.getStatusCondition().getPoison() && !monsEnemy.getStatusCondition().getSleep() && !monsEnemy.getStatusCondition().getParalyze()){
                 if (attType.equals("BURN")){
                     monsEnemy.getStatusCondition().setBurn(true);
-                    System.out.println(monsEnemy.getStats().getHealthPoint());
-                    System.out.println(monsEnemy.getStats().getMaxHP());
                     monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getHealthPoint()-(monsEnemy.getStats().getMaxHP()/8));
                     System.out.printf("%s kena efek BURN nih, HP berkurang 1/8.%n", monsEnemy.getName());
                 }
@@ -48,23 +47,23 @@ public class StatusMove extends Move{
                 }
                 else if (attType.equals("SLEEP")){
                     monsEnemy.getStatusCondition().setSleep(true);
-                    int min = 1;
-                    int max = 7;
-                    int random = ThreadLocalRandom.current().nextInt(min,max+1);
-                    monsEnemy.getStatusCondition().setMasihSleep(random);
+                    Random random = new Random();
+                    int urutan = random.nextInt(7) + 1;
+                    monsEnemy.getStatusCondition().setMasihSleep(urutan);
                     System.out.printf("%s kena efek SLEEP nih, monster tertidur selama %s ronde.%n", monsEnemy.getName(),monsEnemy.getStatusCondition().getMasihSleep());
                 }
                 else if (attType.equals("PARALYZE")){
                     monsEnemy.getStatusCondition().setParalyze(true);
                     monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getSpeed()-(monsEnemy.getStats().getSpeed()/2));
                     System.out.printf("%s kena efek PARALYZE nih, speed berkurang 1/2.%n", monsEnemy.getName(),monsEnemy.getStatusCondition().getMasihSleep());
-                    int min = 1;
-                    int max = 4;
-                    int random = ThreadLocalRandom.current().nextInt(min,max+1);
-                    if (random == 1){
+                    Random random = new Random();
+                    int urutan = random.nextInt(4) + 1;
+                    if (urutan == 1){
+                        monsEnemy.getStatusCondition().setDiam(true);
                         System.out.printf("%s tidak dapat bergerak selama 1 giliran.%n", monsEnemy.getName());
                     }
                     else {
+                        monsEnemy.getStatusCondition().setDiam(false);
                         System.out.printf("%s masih bisa gerak, tapi speednya turun nih.%n", monsEnemy.getName());
                         System.out.printf("Speed %s sekarang sebesar %f.%n", monsEnemy.getName(),(monsEnemy.getStats().getSpeed() * 0.5));
                     }
@@ -72,13 +71,16 @@ public class StatusMove extends Move{
                 if (monsEnemy.getStats().getHealthPoint() < 0.0) {
                     monsEnemy.getStats().setHealthPoint(0.0);
                 }
+                if (monsOwn.getStats().getHealthPoint() < 0.0) {
+                    monsOwn.getStats().setHealthPoint(0.0);
+                }
             }
             else {
                 System.out.printf("%s sudah mendapatkan efek lain.%n", monsEnemy.getName());
             }
         }
         else if(super.getTarget().equals("OWN")){
-            double finalHp = monsOwn.getStats().getMaxHP() - ((effectMove * monsOwn.getStats().getMaxHP())/100);
+            double finalHp = monsOwn.getStats().getHealthPoint() + ((effectMove * monsOwn.getStats().getMaxHP())/100);
             monsOwn.getStats().setHealthPoint(finalHp);
             System.out.println("Melakukan HEAL, HP bertambah");
         }

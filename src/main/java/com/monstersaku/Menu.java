@@ -4,10 +4,6 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Menu {
-    public static void start() {
-        // mindahin biar ke sini gimana ya
-    }
-
     public static void help() {
         System.out.println("PANDUAN BERMAIN");
         System.out.println("1. Ketik 'START' pada bagian 'Select' untuk memulai permainan");

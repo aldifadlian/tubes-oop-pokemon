@@ -8,7 +8,8 @@ public class StatusCondition {
     private boolean isPoison;
     private boolean isSleep;
     private boolean isParalyze;
-    private int masihSleep = 0;
+    private boolean isDiam;
+    private int masihSleep;
 
     //konstruktor
     public StatusCondition(){
@@ -16,6 +17,7 @@ public class StatusCondition {
         this.isPoison=false;
         this.isSleep=false;
         this.isParalyze=false;
+        this.isDiam = false;
     }
     //setter
     public void setBurn(boolean isBurn) {
@@ -32,6 +34,10 @@ public class StatusCondition {
 
 	public void setParalyze(boolean isParalyze) {
         this.isParalyze = isParalyze;
+    }
+
+    public void setDiam(boolean isDiam){
+        this.isDiam = isDiam;
     }
 
 	public void setMasihSleep(int masihSleep){
@@ -51,6 +57,9 @@ public class StatusCondition {
     }
     public boolean getParalyze(){
         return this.isParalyze;
+    }
+    public boolean getDiam(){
+        return this.isDiam;
     }
     public int getMasihSleep(){
 		return this.masihSleep;
