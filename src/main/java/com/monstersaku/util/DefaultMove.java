@@ -21,11 +21,10 @@ public class DefaultMove extends Move {
 
         double finalHp = monsEnemy.getStats().getHealthPoint() - finalDamage;
         monsEnemy.getStats().setHealthPoint(finalHp);
+        monsOwn.getStats().setHealthPoint(monsOwn.getStats().getHealthPoint() - (monsOwn.getStats().getMaxHP())/4);
         if (monsEnemy.getStats().getHealthPoint() < 0.0) {
             monsEnemy.getStats().setHealthPoint(0.0);
         }
-
-        monsOwn.getStats().setHealthPoint(monsOwn.getStats().getHealthPoint() - (monsOwn.getStats().getMaxHP())/4);
         super.setAmmunition(super.getAmmunition()-1);
 
         System.out.printf("Damage yang diberikan oleh %s sebesar %s.%n",monsOwn.getName(),finalDamage);

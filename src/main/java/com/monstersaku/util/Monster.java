@@ -9,7 +9,7 @@ public class Monster {
     private List<ElementType> elemenTypes = new ArrayList<ElementType>();
     private Stats baseStats;
     private List<Move> IDmoves = new ArrayList<Move>();
-    private StatusCondition statusCondition;
+    protected StatusCondition statusCondition;
 
     //Kontruktor
     public Monster (int id, String nama, List<ElementType> elemenTypes, Stats baseStats, List<Move> IDmoves) {
@@ -18,6 +18,7 @@ public class Monster {
         this.elemenTypes = elemenTypes;
         this.baseStats = baseStats;
         this.IDmoves = IDmoves;
+        this.statusCondition = new StatusCondition();
     }
 
     //Getter

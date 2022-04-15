@@ -2,17 +2,16 @@ package com.monstersaku.util;
 import java.util.List;
 import java.util.ArrayList;
 
-public class StatusCondition extends Monster {
+public class StatusCondition {
     //atribut
     private boolean isBurn;
     private boolean isPoison;
     private boolean isSleep;
     private boolean isParalyze;
-    private int masihSleep;
+    private int masihSleep = 0;
 
     //konstruktor
-    public StatusCondition(int id, String nama, List<ElementType> elemenTypes, Stats baseStats, List<Move> IDmoves){
-        super(id,nama,elemenTypes,baseStats,IDmoves);
+    public StatusCondition(){
         this.isBurn=false;
         this.isPoison=false;
         this.isSleep=false;

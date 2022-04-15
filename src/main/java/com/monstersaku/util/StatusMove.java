@@ -32,9 +32,12 @@ public class StatusMove extends Move{
         if (super.getTarget().equals("ENEMY")){
             double finalHp = monsEnemy.getStats().getMaxHP() - effectMove;
             monsEnemy.getStats().setHealthPoint(finalHp);
+            
             if (!monsEnemy.getStatusCondition().getBurn() && !monsEnemy.getStatusCondition().getPoison() && !monsEnemy.getStatusCondition().getSleep() && !monsEnemy.getStatusCondition().getParalyze()){
                 if (attType.equals("BURN")){
                     monsEnemy.getStatusCondition().setBurn(true);
+                    System.out.println(monsEnemy.getStats().getHealthPoint());
+                    System.out.println(monsEnemy.getStats().getMaxHP());
                     monsEnemy.getStats().setHealthPoint(monsEnemy.getStats().getHealthPoint()-(monsEnemy.getStats().getMaxHP()/8));
                     System.out.printf("%s kena efek BURN nih, HP berkurang 1/8.%n", monsEnemy.getName());
                 }
@@ -65,6 +68,9 @@ public class StatusMove extends Move{
                         System.out.printf("%s masih bisa gerak, tapi speednya turun nih.%n", monsEnemy.getName());
                         System.out.printf("Speed %s sekarang sebesar %f.%n", monsEnemy.getName(),(monsEnemy.getStats().getSpeed() * 0.5));
                     }
+                }
+                if (monsEnemy.getStats().getHealthPoint() < 0.0) {
+                    monsEnemy.getStats().setHealthPoint(0.0);
                 }
             }
             else {

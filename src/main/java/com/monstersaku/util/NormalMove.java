@@ -15,7 +15,7 @@ public class NormalMove extends Move {
         int random = ThreadLocalRandom.current().nextInt(min,max+1);
         double finalRandom = 0.01*random;
         double finalDamage = (double)Math.floor((basePower * ((monsOwn.getStats().getAttack()) / (monsEnemy.getStats().getDefense())) + 2) * finalRandom * elementEffectivity(monsEnemy));
-        // if (monsOwn.getStatusCondition().getBurn() == true){
+        // if (monsOwn.getStatusCondition().getBurn()){
         //    finalDamage = finalDamage * 0.5;
         // }
 

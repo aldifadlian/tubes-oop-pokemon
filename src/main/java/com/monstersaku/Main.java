@@ -171,6 +171,58 @@ public class Main {
                     int[] players = {-1, -1};
                     System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
                     System.out.println("Round "+idRound);
+
+                    // bingung mau check tapi butuh acctivemonster bener ga?
+                    Monster playerPlayActiveMons = playerPlay.getActiveMonster();
+                    Monster playerOppActiveMons = playerOpponent.getActiveMonster();
+
+                    if (playerPlayActiveMons.getStatusCondition().getBurn()){
+                        playerPlayActiveMons.getStats().setHealthPoint(playerPlayActiveMons.getStats().getHealthPoint()-(playerPlayActiveMons.getStats().getMaxHP()/8));        
+                        System.out.printf("%s's %s terkena BURN, HP berkurang 1/8.%n", playerPlay.getPlayerName(), playerPlayActiveMons.getName());
+                    }
+                    else if (playerPlayActiveMons.getStatusCondition().getPoison()){
+                        playerPlayActiveMons.getStats().setHealthPoint(playerPlayActiveMons.getStats().getHealthPoint() - (playerPlayActiveMons.getStats().getMaxHP()/16));
+                        System.out.printf("%s's %s terkena POISON, HP berkurang 1/16.%n", playerPlay.getPlayerName(), playerPlayActiveMons.getName()); 
+                    }
+                    else if (playerPlayActiveMons.getStatusCondition().getParalyze()){
+                        System.out.printf("%s's %s terkena PARALYZE ampuh, tidak dapat bergerak round ini.%n", playerPlay.getPlayerName(), playerPlayActiveMons.getName()); 
+                    }
+                    if (playerOppActiveMons.getStatusCondition().getBurn()){
+                        playerOppActiveMons.getStats().setHealthPoint(playerOppActiveMons.getStats().getHealthPoint()-(playerOppActiveMons.getStats().getMaxHP()/8));          
+                        System.out.printf("%s's %s terkena BURN, HP berkurang 1/8.%n", playerOpponent.getPlayerName(), playerOppActiveMons.getName());
+                    }
+                    else if (playerOppActiveMons.getStatusCondition().getPoison()){
+                        playerOppActiveMons.getStats().setHealthPoint(playerOppActiveMons.getStats().getHealthPoint() - (playerOppActiveMons.getStats().getMaxHP()/16));
+                        System.out.printf("%s's %s terkena POISON, HP berkurang 1/16.%n", playerOpponent.getPlayerName(), playerOppActiveMons.getName()); 
+                    }
+                    else if (playerOppActiveMons.getStatusCondition().getParalyze()){
+                        System.out.printf("%s's %s terkena stunt PARALYZE, tidak dapat bergerak round ini.", playerOpponent.getPlayerName(), playerOppActiveMons.getName()); 
+                    }
+                    for(Monster monster : listMonsPemain1){
+                        if (monster.getStatusCondition().getSleep()){
+                            monster.getStatusCondition().setMasihSleep(monster.getStatusCondition().getMasihSleep()-1);
+                            if (monster.getStatusCondition().getMasihSleep() == 0){
+                                monster.getStatusCondition().setSleep(false);
+                                System.out.printf("%s woke up!%n", monster.getName());
+                            }
+                            else {
+                                System.out.printf("%s's %s Masih Akan Tertidur Sebanyak %d Ronde.%n", playerPlay.getPlayerName(), monster.getName(), monster.getStatusCondition().getMasihSleep());
+                            }
+                        }
+                    }
+                    for(Monster monster : listMonsPemain2){
+                        if (monster.getStatusCondition().getSleep()){
+                            monster.getStatusCondition().setMasihSleep(monster.getStatusCondition().getMasihSleep()-1);
+                            if (monster.getStatusCondition().getMasihSleep() == 0){
+                                monster.getStatusCondition().setSleep(false);
+                                System.out.printf("%s woke up!%n", monster.getName());
+                            }
+                            else {
+                                System.out.printf("%s's %s Masih Akan Tertidur Sebanyak %d Ronde.%n", playerOpponent.getPlayerName(), monster.getName(), monster.getStatusCondition().getMasihSleep());
+                            }
+                        }
+                    }
+
                     boolean isRound = true;
                     int ctr = 1;
                     while (isRound) {
