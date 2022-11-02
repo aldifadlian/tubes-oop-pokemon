@@ -92,7 +92,7 @@ public class Main {
                 Stats baseStatsMons = new Stats(arrayStatsList.get(0), arrayStatsList.get(1), arrayStatsList.get(2), arrayStatsList.get(3), arrayStatsList.get(4), arrayStatsList.get(5));
                 
                 String moveMons = line[4];
-                String[] arrayMove = moveMons.split(",",7);
+                String[] arrayMove = moveMons.split(",");
                 ArrayList<Move> arrMoveMons = new ArrayList<Move>();
                 DefaultMove defaultMove = new DefaultMove();
                 arrMoveMons.add(defaultMove);
